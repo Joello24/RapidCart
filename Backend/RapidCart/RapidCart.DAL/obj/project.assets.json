@@ -8,25 +8,25 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Brayden\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\Joello\\.nuget\\packages\\": {},
+    "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
+      "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
       "projectName": "RapidCart.DAL",
-      "projectPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
-      "packagesPath": "C:\\Users\\Brayden\\.nuget\\packages\\",
-      "outputPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\RapidCart\\RapidCart.DAL\\obj\\",
+      "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
+      "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
+      "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Brayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

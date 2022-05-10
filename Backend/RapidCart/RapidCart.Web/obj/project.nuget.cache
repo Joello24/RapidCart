@@ -1,19 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "oztSnQ4DteUMp22NYOYPPCy/Xdx9UWJFbFDQ8mMMsczeLJx5x5InerE94BdX36e7TDwH9CewZDz9RbQ0fbcZIA==",
+  "dgSpecHash": "p1hgM4qThjG4xpls9wv6A3iKsaZ4l3jiZGszHNT+cjqMy11A+bfrYIeEHydgq5HIQOK62bLNq1mKLA0zcTwKhA==",
   "success": true,
-  "projectFilePath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\RapidCart\\RapidCart.Web\\RapidCart.Web.csproj",
+  "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.Web\\RapidCart.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.16\\microsoft.aspnetcore.authentication.jwtbearer.5.0.16.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.16\\microsoft.aspnetcore.authentication.jwtbearer.5.0.16.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.identitymodel.logging\\6.10.0\\microsoft.identitymodel.logging.6.10.0.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
-    "C:\\Users\\Brayden\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.identitymodel.logging\\6.10.0\\microsoft.identitymodel.logging.6.10.0.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
+    "C:\\Users\\Joello\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
