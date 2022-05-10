@@ -1,6 +1,4 @@
 
-
-
 alter database RapidCart set single_user with rollback immediate
 USE master;
 GO
@@ -13,19 +11,20 @@ GO
 USE RapidCart;
 GO
 
-CREATE TABLE Customer (
-                          CustomerId int primary key identity(1,1),
-                          FirstName nvarchar(50) not null,
-                          LastName nvarchar(50) not null,
-                          Email nvarchar(50) not null,
-                          [Password] nvarchar(250) not null,
-                          Phone nvarchar(20) not null
+CREATE TABLE User (
+                      UserId int primary key identity(1,1),
+                      FirstName nvarchar(50) not null,
+                      LastName nvarchar(50) not null,
+                      Email nvarchar(50) not null,
+                      [Password] nvarchar(250) not null,
+                      Phone nvarchar(20) not null,
+                      PermissionId int not null foreign key references Permissions(PermissionId)
 )
 GO
 
 CREATE TABLE [Address] (
                            AddressId int primary key identity(1,1),
-                           CustomerId int not null foreign key references Customer(CustomerId),
+                           UserId int not null foreign key references User(UserId),
                            Street1 nvarchar(50) not null,
                            City nvarchar(50) not null,
                            PostalCode nvarchar(15) not null,
@@ -35,7 +34,7 @@ GO
 
 CREATE TABLE [Order] (
                          OrderId int primary key identity(1,1),
-                         CustomerId int not null foreign key references Customer(CustomerId),
+                         UserId int not null foreign key references User(UserId),
                          TotalCost decimal,
                          DateCreated datetime2 not null,
 )
@@ -63,5 +62,11 @@ CREATE TABLE OrderItem(
                           Quantity int not null,
                           ItemPrice decimal,
                           TotalCost decimal
+)
+GO
+
+CREATE TABLE Permissions(
+                            PermissionId int primary key identity(1,1),
+                            PermissionName varchar(50) not null
 )
 GO

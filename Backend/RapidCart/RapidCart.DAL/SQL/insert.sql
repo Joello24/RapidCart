@@ -3,7 +3,6 @@
 
 delete from AgencyAgent where 1=1;
 
-
 delete from MissionAgent where 1=1;
 
 delete from Mission where 1=1;
