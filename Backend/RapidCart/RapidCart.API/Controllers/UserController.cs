@@ -41,10 +41,42 @@ namespace RapidCart.Web.Controllers
         // Response Update(User user);
         // Response Delete(int userId);
         [HttpPut, Authorize]
-        public IActionResult UpdateUser([FromBody] User viewUser)
+        public IActionResult UpdateUser([FromBody] ViewUser viewUser)
         {
-            if (ModelState.IsValid && viewUser.UserId > 0) ;
-            return Ok();
+            if (ModelState.IsValid && viewUser.UserId > 0)
+            {
+                var user = new User()
+                {
+                    UserId = viewUser.UserId,
+                    FirstName = viewUser.FirstName,
+                    LastName = viewUser.LastName,
+                     = viewUser.DateOfBirth,
+                    Height = viewUser.Height
+                };
+            
+                var userToUpdate = _userRepository.Get(user.UserId);
+                if (userToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                var result = _userRepository.Update(user);
+                if (result.Success)
+                {
+                    return Ok("User updated successfully");
+                }
+                else
+                {
+                    return BadRequest(result.Message);
+                }
+            }
+            else
+            {
+                if(viewUser.userId < 1)
+                    ModelState.AddModelError("userId", "Invalid User Id");
+                return BadRequest(ModelState);
+            }
+            }
         }
     }
 }

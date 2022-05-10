@@ -37,7 +37,7 @@ insert into Category ( [Name]) values ( 'Paper Goods');
 insert into Category ( [Name]) values ( 'Personal Care');
 insert into Category ( [Name]) values ( 'Other');
 go
-insert into Permissions (PermissionName)
+insert into [Permissions] (PermissionName)
 values ('Customer'), ('Admin');
 go
 insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'gjost0@trellian.com', 'hFMNCbBPRMzm', '332-411-2147',2);
