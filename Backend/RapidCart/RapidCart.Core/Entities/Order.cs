@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core.Entities
 {
-    internal class Order
+    public class Order
     {
+        public int OrderId { get; set; }
+        public int UserId { get; set; }
+        public decimal TotalCost { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }
