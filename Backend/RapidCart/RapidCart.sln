@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.BLL", "RapidCart.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.BLL.Tests", "RapidCart.BLL.Tests\RapidCart.BLL.Tests.csproj", "{5BFF922E-99DB-4D51-8B94-5EC3CFD1C8BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.Web", "RapidCart.Web\RapidCart.Web.csproj", "{4A9B4F86-A0FA-4392-8711-C777FEA0DEF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.API", "RapidCart.API\RapidCart.API.csproj", "{4A9B4F86-A0FA-4392-8711-C777FEA0DEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

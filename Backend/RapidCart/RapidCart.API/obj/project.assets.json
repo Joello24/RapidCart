@@ -385,11 +385,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.Web\\RapidCart.Web.csproj",
-      "projectName": "RapidCart.Web",
-      "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.Web\\RapidCart.Web.csproj",
+      "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.API\\RapidCart.API.csproj",
+      "projectName": "RapidCart.API",
+      "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.API\\RapidCart.API.csproj",
       "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
-      "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.Web\\obj\\",
+      "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

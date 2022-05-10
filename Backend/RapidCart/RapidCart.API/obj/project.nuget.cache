@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p1hgM4qThjG4xpls9wv6A3iKsaZ4l3jiZGszHNT+cjqMy11A+bfrYIeEHydgq5HIQOK62bLNq1mKLA0zcTwKhA==",
+  "dgSpecHash": "/QhspTaU9xqMXHb2GAX9QZ5oOcC+0+WKPJM3ScDHFH6FuvFldvCDJ7972UjAh05coAEUP5b+3nouu5ltlfojPg==",
   "success": true,
-  "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.Web\\RapidCart.Web.csproj",
+  "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.API\\RapidCart.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Joello\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.16\\microsoft.aspnetcore.authentication.jwtbearer.5.0.16.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
