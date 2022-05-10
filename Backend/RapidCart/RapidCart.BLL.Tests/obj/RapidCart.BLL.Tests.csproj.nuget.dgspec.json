@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj": {}
+    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj": {}
   },
   "projects": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj": {
+    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
         "projectName": "RapidCart.BLL.Tests",
-        "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
-        "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
-        "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
+        "packagesPath": "C:\\Users\\Gemeng\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Gemeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
