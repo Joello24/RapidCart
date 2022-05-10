@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {}
+    "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {
+    "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
+        "projectUniqueName": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
         "projectName": "RapidCart.DAL.Tests",
-        "projectPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
-        "packagesPath": "C:\\Users\\Gemeng\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\obj\\",
+        "projectPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
+        "packagesPath": "C:\\Users\\Brayden\\.nuget\\packages\\",
+        "outputPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gemeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -72,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
