@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "sEk8Da6hOMLqb993Ts3DFglR0DCYixzb7QzNfh/aeHItRjwaspWojDs3n7kwG5H4t/zz82QrtAOYq8NSLfdmsw==",
+  "dgSpecHash": "cWXvlf9qCrFX2aVbiIdwehWH14I5bj9MfDf91OiC00x/bEnP1vdjk/V4jtYMx6e4U5C5mG8hImXAKCiTRAt05w==",
   "success": true,
-  "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
-=======
-  "dgSpecHash": "dq224iOJt+1K/d4SQdX0qGmNBYzHY8SmW4SC64dFKZJiAMtbruyIt/jj6lyh3by4UvyCLen4N1bGYThTSluPZw==",
-  "success": true,
-  "projectFilePath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
->>>>>>> 8e3e149f8f27df7c3cbe4c4f2af3dd4fd5a70d34
+  "projectFilePath": "Q:\\Dev10\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file Q:\\Dev10\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

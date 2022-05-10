@@ -10,3 +10,15 @@ Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\n
 Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\refint\RapidCart.BLL.dll
 Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.pdb
 Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\ref\RapidCart.BLL.dll
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\bin\Debug\net5.0\RapidCart.BLL.deps.json
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\bin\Debug\net5.0\RapidCart.BLL.dll
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\bin\Debug\net5.0\RapidCart.BLL.pdb
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.csproj.AssemblyReference.cache
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.GeneratedMSBuildEditorConfig.editorconfig
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.AssemblyInfoInputs.cache
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.AssemblyInfo.cs
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.csproj.CoreCompileInputs.cache
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.dll
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\refint\RapidCart.BLL.dll
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\RapidCart.BLL.pdb
+Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.BLL\obj\Debug\net5.0\ref\RapidCart.BLL.dll

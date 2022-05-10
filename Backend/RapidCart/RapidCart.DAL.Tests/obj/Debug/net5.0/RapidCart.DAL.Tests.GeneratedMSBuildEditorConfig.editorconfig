@@ -7,8 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RapidCart.DAL.Tests
-<<<<<<< HEAD
-build_property.ProjectDir = Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL.Tests\
-=======
-build_property.ProjectDir = D:\Brayden\Dev10 Trainning\Capstone Project\Capstone\RapidCart\Backend\RapidCart\RapidCart.DAL.Tests\
->>>>>>> 8e3e149f8f27df7c3cbe4c4f2af3dd4fd5a70d34
+build_property.ProjectDir = Q:\Dev10\Capstone\RapidCart\Backend\RapidCart\RapidCart.DAL.Tests\
