@@ -1,19 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.Core", "RapidCart.Core\RapidCart.Core.csproj", "{DEEFD026-593F-4673-9180-CF2C75622F80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.Core", "RapidCart.Core\RapidCart.Core.csproj", "{DEEFD026-593F-4673-9180-CF2C75622F80}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C7F62F0B-70D2-4098-AE21-BB6A46663339} = {C7F62F0B-70D2-4098-AE21-BB6A46663339}
+		{A2EDF145-FF01-4DB9-9B6E-10FE6B33DFBC} = {A2EDF145-FF01-4DB9-9B6E-10FE6B33DFBC}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.DAL", "RapidCart.DAL\RapidCart.DAL.csproj", "{C7F62F0B-70D2-4098-AE21-BB6A46663339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.DAL", "RapidCart.DAL\RapidCart.DAL.csproj", "{C7F62F0B-70D2-4098-AE21-BB6A46663339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.DAL.Tests", "RapidCart.DAL.Tests\RapidCart.DAL.Tests.csproj", "{27E2F199-AED4-493E-BC3B-4D9F63770FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.DAL.Tests", "RapidCart.DAL.Tests\RapidCart.DAL.Tests.csproj", "{27E2F199-AED4-493E-BC3B-4D9F63770FDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.BLL", "RapidCart.BLL\RapidCart.BLL.csproj", "{A2EDF145-FF01-4DB9-9B6E-10FE6B33DFBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.BLL", "RapidCart.BLL\RapidCart.BLL.csproj", "{A2EDF145-FF01-4DB9-9B6E-10FE6B33DFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.BLL.Tests", "RapidCart.BLL.Tests\RapidCart.BLL.Tests.csproj", "{5BFF922E-99DB-4D51-8B94-5EC3CFD1C8BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.BLL.Tests", "RapidCart.BLL.Tests\RapidCart.BLL.Tests.csproj", "{5BFF922E-99DB-4D51-8B94-5EC3CFD1C8BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidCart.API", "RapidCart.API\RapidCart.API.csproj", "{4A9B4F86-A0FA-4392-8711-C777FEA0DEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidCart.API", "RapidCart.API\RapidCart.API.csproj", "{4A9B4F86-A0FA-4392-8711-C777FEA0DEF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

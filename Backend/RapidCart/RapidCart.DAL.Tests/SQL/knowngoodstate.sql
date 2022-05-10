@@ -17,8 +17,8 @@ BEGIN
     DBCC CHECKIDENT (Item, RESEED, 0);
     delete from Item where 1=1;
     DBCC CHECKIDENT (Item, RESEED, 0);
-    delete from Permissions where 1=1;
-    DBCC CHECKIDENT (Permissions, RESEED, 0);
+    delete from [Permissions] where 1=1;
+    DBCC CHECKIDENT ([Permissions], RESEED, 0);
 
     delete from Category where 1=1;
     DBCC CHECKIDENT(Category, RESEED, 0);
@@ -41,7 +41,7 @@ BEGIN
     insert into Category ( [Name]) values ( 'Personal Care');
     insert into Category ( [Name]) values ( 'Other');
 
-    insert into Permissions (PermissionName)
+    insert into [Permissions] (PermissionName)
     values ('Customer'), ('Admin');
 
     insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'gjost0@trellian.com', 'hFMNCbBPRMzm', '332-411-2147',2);

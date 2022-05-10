@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RapidCart.Core.Entities
+namespace RapidCart.Core
 {
     public class OrderItem
     {

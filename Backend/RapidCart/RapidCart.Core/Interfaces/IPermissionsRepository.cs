@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core
 {
-    public class Category
+    internal interface IPermissionsRepository
     {
-        public int CategoryId { get; set; }
-        public string Name { get; set; }
+        Response<Permissions> Get(int Permissions);
+
+        Response<List<Permissions>> GetAll();
     }
 }
