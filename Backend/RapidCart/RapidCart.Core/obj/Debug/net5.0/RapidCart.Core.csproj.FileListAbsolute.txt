@@ -1,0 +1,12 @@
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\bin\Debug\net5.0\RapidCart.Core.deps.json
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\bin\Debug\net5.0\RapidCart.Core.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\bin\Debug\net5.0\RapidCart.Core.pdb
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.csproj.AssemblyReference.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.GeneratedMSBuildEditorConfig.editorconfig
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.AssemblyInfoInputs.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.AssemblyInfo.cs
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.csproj.CoreCompileInputs.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\refint\RapidCart.Core.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\RapidCart.Core.pdb
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.Core\obj\Debug\net5.0\ref\RapidCart.Core.dll

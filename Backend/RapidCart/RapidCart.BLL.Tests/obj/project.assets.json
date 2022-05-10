@@ -4903,19 +4903,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gemeng\\.nuget\\packages\\": {}
+    "C:\\Users\\Joello\\.nuget\\packages\\": {},
+    "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
+      "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
       "projectName": "RapidCart.BLL.Tests",
-      "projectPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
-      "packagesPath": "C:\\Users\\Gemeng\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\obj\\",
+      "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\RapidCart.BLL.Tests.csproj",
+      "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
+      "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Gemeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
