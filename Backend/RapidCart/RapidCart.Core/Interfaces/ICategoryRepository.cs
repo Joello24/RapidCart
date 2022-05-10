@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core.Interfaces
 {
-    public interface IItemRepository
+    public interface ICategoryRepository
     {
-        Response<Item> Insert(Item item);
-        Response Update(Item item);
-        Response Delete(int itemId);
-        Response<Item> Get(int itemId);
-
+        Response<Category> Get(int categoryId);
+        Response<List> Category>> GetAll();
     }
 }

@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {}
+    "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {}
   },
   "projects": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {
+    "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
         "projectName": "RapidCart.DAL.Tests",
-        "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
-        "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
-        "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\obj\\",
+        "projectPath": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\RapidCart.DAL.Tests.csproj",
+        "packagesPath": "C:\\Users\\TaSeanna Bell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TaSeanna Bell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

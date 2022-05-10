@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {}
+    "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {}
   },
   "projects": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {
+    "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
         "projectName": "RapidCart.BLL",
-        "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
-        "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
-        "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\obj\\",
+        "projectPath": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+        "packagesPath": "C:\\Users\\TaSeanna Bell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TaSeanna Bell\\Documents\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TaSeanna Bell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
