@@ -13,6 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RapidCart.Core;
+using RapidCart.Core.Enums;
+using RapidCart.DAL;
+using RapidCart.DAL.Repositories;
 
 namespace RapidCart.Web
 {
@@ -54,7 +58,14 @@ namespace RapidCart.Web
                    };
                    services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
                });
+            
+            var fac = new DBFactory(AppMode.Live);
             services.AddControllers();
+            services.AddTransient<ICategoryRepository>(r => new CategoryRepository(fac));
+            services.AddTransient<IOrderRepository>(r => new OrderRespository(fac));
+            services.AddTransient<IUserRepository>(r => new UserRepository(fac));
+            //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
