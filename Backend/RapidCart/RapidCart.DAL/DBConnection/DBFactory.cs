@@ -31,7 +31,7 @@ namespace RapidCart.DAL
             }
             else
             {
-                connectionString = config["ConnectionStrings:RapidCart"];
+                connectionString = config["ConnectionStrings:RapidCartTest"];
             }
 
             var options = new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(connectionString).Options;

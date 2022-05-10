@@ -12,5 +12,7 @@ namespace RapidCart.Core
         public int UserId { get; set; }
         public decimal TotalCost { get; set; }
         public DateTime DateCreated { get; set; }
+        
+        public List<OrderItem> OrderItems { get; set; }
     }
 }
