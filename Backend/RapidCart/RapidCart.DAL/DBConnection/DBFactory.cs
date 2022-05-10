@@ -48,7 +48,7 @@ namespace RapidCart.DAL
 
             var config = builder.Build();
 
-            var connectionString = config["ConnectionStrings:FieldAgent"];
+            var connectionString = config["ConnectionStrings:RapidCartTest"];
 
             return connectionString;
         }
