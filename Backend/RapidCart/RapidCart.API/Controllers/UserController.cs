@@ -37,7 +37,6 @@ namespace RapidCart.Web.Controllers
             }
         }
 
-        
         // Response Delete(int userId);
         [HttpDelete("{UserId}"), Authorize]
         public IActionResult DeleteUser(int userId)
