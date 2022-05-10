@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKgaYsLnwQQIbPIa8/OCJhCZihPss4gThKLSrE5EAcfJICuC+3GxO2pOHFJlq6lNjXclxy9TvV4p/GahEtDLaQ==",
+  "dgSpecHash": "w+GhARzDYrLoxBABWxVm9qNrdCx3IlmiFKnNaKmGEOqWwCTwDDVIoKX8myJdG4qYQowiC+s97BRRjY+ZWmCqJg==",
   "success": true,
-  "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

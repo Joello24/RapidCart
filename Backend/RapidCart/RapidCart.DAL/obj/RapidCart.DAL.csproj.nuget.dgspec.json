@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj": {}
+    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj": {}
   },
   "projects": {
-    "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj": {
+    "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
         "projectName": "RapidCart.DAL",
-        "projectPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
-        "packagesPath": "C:\\Users\\Joello\\.nuget\\packages\\",
-        "outputPath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\obj\\",
+        "projectPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\RapidCart.DAL.csproj",
+        "packagesPath": "C:\\Users\\Gemeng\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gemeng\\Code\\RapidCart\\Backend\\RapidCart\\RapidCart.DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Gemeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
