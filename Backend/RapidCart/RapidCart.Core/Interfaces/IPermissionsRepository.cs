@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core
 {
-    internal interface IPermissionsRepository
+    public interface IPermissionsRepository
     {
         Response<Permissions> Get(int Permissions);
 
