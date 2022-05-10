@@ -8,5 +8,9 @@ namespace RapidCart.Core.Entities
 {
     public class Order
     {
+        public int OrderId { get; set; }
+        public int UserId { get; set; }
+        public decimal TotalCost { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

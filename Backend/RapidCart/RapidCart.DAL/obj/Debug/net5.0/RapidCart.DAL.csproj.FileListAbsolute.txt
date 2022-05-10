@@ -1,0 +1,15 @@
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.csproj.AssemblyReference.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.GeneratedMSBuildEditorConfig.editorconfig
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.AssemblyInfoInputs.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.AssemblyInfo.cs
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.csproj.CoreCompileInputs.cache
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\bin\Debug\net5.0\RapidCart.DAL.deps.json
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\bin\Debug\net5.0\RapidCart.DAL.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\bin\Debug\net5.0\RapidCart.DAL.pdb
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\bin\Debug\net5.0\RapidCart.Core.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\bin\Debug\net5.0\RapidCart.Core.pdb
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.csproj.CopyComplete
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\refint\RapidCart.DAL.dll
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\RapidCart.DAL.pdb
+Q:\Dev10\Modules\capstone2\RapidCart\Backend\RapidCart\RapidCart.DAL\obj\Debug\net5.0\ref\RapidCart.DAL.dll

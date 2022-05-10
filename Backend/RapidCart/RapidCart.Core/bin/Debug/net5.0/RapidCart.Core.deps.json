@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "RapidCart.Core/1.0.0": {
+        "runtime": {
+          "RapidCart.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RapidCart.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

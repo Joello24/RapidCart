@@ -13,4 +13,8 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="bin\Debug\net5.0\appsettings.json" />
+  </ItemGroup>
+
 </Project>

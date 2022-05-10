@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core.Entities
 {
-    internal class Permissions
+    public class Permissions
     {
+        public int PermissionId { get; set; }
+        public string PermissionName { get; set; }
     }
 }

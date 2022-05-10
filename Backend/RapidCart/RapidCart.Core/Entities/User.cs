@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core.Entities
 {
-    internal class User
+    public class User
     {
-
+        public int UserID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Number { get; set; }
+        public string PermissionId { get; set; }
     }
 }
