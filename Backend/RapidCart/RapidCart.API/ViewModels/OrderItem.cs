@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Core
 {
-    public class Order
+    public class OrderItem
     {
         public int OrderId { get; set; }
-        public int UserId { get; set; }
+        public int ItemId { get; set; }
+        public int Quantity { get; set; }
+        public decimal ItemPrice { get; set; }
         public decimal TotalCost { get; set; }
-        public DateTime DateCreated { get; set; }
-        
-        public List<OrderItem> OrderItems { get; set; }
     }
 }

@@ -1,6 +1,3 @@
--- THIS IS A STARTING EXAMPLE OF A KNOWN GOOD STATE, CONVERT TO WORK WITH OUR DATABASE 
-USE RapidCartTest;
-GO
 CREATE PROCEDURE [TestSetKnownGoodState]
 AS
 BEGIN
@@ -17,16 +14,20 @@ BEGIN
     DBCC CHECKIDENT (Item, RESEED, 0);
     delete from Item where 1=1;
     DBCC CHECKIDENT (Item, RESEED, 0);
+
+    delete from [User] where 1=1;
+    DBCC CHECKIDENT ([User], RESEED, 0);
+    delete from [User] where 1=1;
+
     delete from [Permissions] where 1=1;
     DBCC CHECKIDENT ([Permissions], RESEED, 0);
+
 
     delete from Category where 1=1;
     DBCC CHECKIDENT(Category, RESEED, 0);
     delete from Category where 1=1;
 
-    delete from [User] where 1=1;
-    DBCC CHECKIDENT ([User], RESEED, 0);
-    delete from [User] where 1=1;
+
 
     insert into Category ( [Name]) values ( 'Beverages');
     insert into Category ( [Name]) values ( 'Bakery');
@@ -362,3 +363,4 @@ BEGIN
 
 END;
 go
+

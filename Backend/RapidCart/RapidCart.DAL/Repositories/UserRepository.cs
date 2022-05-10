@@ -22,9 +22,12 @@ namespace RapidCart.DAL.Repositories
             {
                 try
                 {
-                    var address = db.Address.Where(x => x.UserId == userId).FirstOrDefault();
-                    var user = db.Address.Where(x => x.UserId == userId).FirstOrDefault();
-                    db.Address.Remove(user);
+                    var address = db.Address.FirstOrDefault(x => x.UserId == userId);
+                    var user = db.User.Where(i => i.UserId == userId).FirstOrDefault();
+                    var order = db.Order.Where(i => i.UserId == userId).Include(i=> i.OrderItems).ToList();
+                    db.Address.Remove(address);
+                    db.Order.RemoveRange(order);
+                    db.User.Remove(user);
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -46,7 +49,7 @@ namespace RapidCart.DAL.Repositories
             {
                 try
                 {
-                    response.Data= db.User.Where(x => x.UserId == userId).FirstOrDefault();
+                    response.Data= db.User.FirstOrDefault(x => x.UserId == userId);
                     if (response.Data == null)
                     {
                         response.Message = "User not found";

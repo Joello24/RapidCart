@@ -25,6 +25,7 @@ namespace RapidCart.DAL.DBConnection
         {
             modelBuilder.Entity<OrderItem>()
                 .HasKey(OI => new { OI.OrderId, OI.ItemId });
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
