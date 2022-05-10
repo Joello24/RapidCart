@@ -37,9 +37,59 @@ namespace RapidCart.Web.Controllers
             }
         }
 
-        // [Response<User> Insert(User user);
-        // Response Update(User user);
+        
         // Response Delete(int userId);
+        [HttpDelete("{UserId}"), Authorize]
+        public IActionResult DeleteUser(int userId)
+        {
+            var user = _userRepository.Get(userId);
+            if (!user.Success)
+            {
+                return NotFound(user.Message);
+            }
+            
+            var result = _userRepository.Delete(userId);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddUser([FromBody] ViewUser viewUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User()
+                {
+                    UserId = viewUser.UserId,
+                    FirstName = viewUser.FirstName,
+                    LastName = viewUser.LastName,
+                    Email = viewUser.Email,
+                    Password = viewUser.Password,
+                    Phone = viewUser.Phone,
+                };
+                var result = _userRepository.Insert(user);
+                if (result.Success)
+                {
+                    return CreatedAtRoute("GetUser", new { id = user.UserId }, user);
+                }
+                else
+                {
+                    return BadRequest(result.Message);
+                }
+                
+            }else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+            
+        
         [HttpPut, Authorize]
         public IActionResult UpdateUser([FromBody] ViewUser viewUser)
         {
@@ -50,8 +100,9 @@ namespace RapidCart.Web.Controllers
                     UserId = viewUser.UserId,
                     FirstName = viewUser.FirstName,
                     LastName = viewUser.LastName,
-                     = viewUser.DateOfBirth,
-                    Height = viewUser.Height
+                    Email = viewUser.Email,
+                    Password = viewUser.Password,
+                    Phone = viewUser.Phone,
                 };
             
                 var userToUpdate = _userRepository.Get(user.UserId);
@@ -72,11 +123,11 @@ namespace RapidCart.Web.Controllers
             }
             else
             {
-                if(viewUser.userId < 1)
-                    ModelState.AddModelError("userId", "Invalid User Id");
+                if(viewUser.UserId < 1)
+                    ModelState.AddModelError("UserId", "Invalid User Id");
                 return BadRequest(ModelState);
             }
-            }
         }
+        
     }
 }
