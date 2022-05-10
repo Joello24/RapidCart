@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "sEk8Da6hOMLqb993Ts3DFglR0DCYixzb7QzNfh/aeHItRjwaspWojDs3n7kwG5H4t/zz82QrtAOYq8NSLfdmsw==",
   "success": true,
   "projectFilePath": "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+=======
+  "dgSpecHash": "dq224iOJt+1K/d4SQdX0qGmNBYzHY8SmW4SC64dFKZJiAMtbruyIt/jj6lyh3by4UvyCLen4N1bGYThTSluPZw==",
+  "success": true,
+  "projectFilePath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+>>>>>>> 8e3e149f8f27df7c3cbe4c4f2af3dd4fd5a70d34
   "expectedPackageFiles": [],
   "logs": []
 }

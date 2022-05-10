@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "Q:\\Dev10\\Modules\\capstone2\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {}
   },
   "projects": {
@@ -19,6 +20,26 @@
         ],
         "configFilePaths": [
           "C:\\Users\\Joello\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {}
+  },
+  "projects": {
+    "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+        "projectName": "RapidCart.BLL",
+        "projectPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\RapidCart.BLL.csproj",
+        "packagesPath": "C:\\Users\\Brayden\\.nuget\\packages\\",
+        "outputPath": "D:\\Brayden\\Dev10 Trainning\\Capstone Project\\Capstone\\RapidCart\\Backend\\RapidCart\\RapidCart.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Brayden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 8e3e149f8f27df7c3cbe4c4f2af3dd4fd5a70d34
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
