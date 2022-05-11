@@ -47,7 +47,7 @@ namespace RapidCart.DAL.Tests
             var actual = db.Get(permissionId);
 
             Assert.IsTrue(actual.Success);
-            Assert.AreEqual(actual.Data.PermissionId, _admin.PermissionId);
+            Assert.AreEqual(actual.Data.PermissionId, permissionId);
             Assert.IsNull(actual.Message);
         }
 
