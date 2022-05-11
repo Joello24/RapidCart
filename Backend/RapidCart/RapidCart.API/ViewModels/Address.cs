@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RapidCart.Core
+namespace RapidCart.Web.ViewModels
 {
     public class Address
     {

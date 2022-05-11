@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RapidCart.Core
+namespace RapidCart.Web.ViewModels
 {
     public class Item
     {
@@ -15,6 +15,5 @@ namespace RapidCart.Core
         public decimal Price { get; set; }
         public string Inventory { get; set; }
         
-        public List<OrderItem> OrderItem { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RapidCart.Core;
+using RapidCart.Web.ViewModels;
 
 namespace RapidCart.Web.Controllers
 {
@@ -18,7 +19,7 @@ namespace RapidCart.Web.Controllers
         // Response<Order> Get(int orderId);
         // Response<List<Order>> GetByUser(int userId);
         [HttpGet]
-        [Route("/api/[controlller]/{id}", Name = "GetOrder")]
+        [Route("/api/[controller]/{id}", Name = "GetOrder")]
         public IActionResult GetOrder(int id)
         {
             var order = _orderRepository.Get(id);
@@ -29,7 +30,7 @@ namespace RapidCart.Web.Controllers
             return Ok(order);
         }
         [HttpGet]
-        [Route("/api/[controlller]/user/{id}", Name = "GetOrdersByUser")]
+        [Route("/api/[controller]/user/{id}", Name = "GetOrdersByUser")]
         public IActionResult GetOrdersByUser(int id)
         {
             var orders = _orderRepository.GetByUser(id);

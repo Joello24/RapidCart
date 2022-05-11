@@ -64,6 +64,7 @@ namespace RapidCart.Web
             services.AddTransient<ICategoryRepository>(r => new CategoryRepository(fac));
             services.AddTransient<IOrderRepository>(r => new OrderRespository(fac));
             services.AddTransient<IUserRepository>(r => new UserRepository(fac));
+            services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
             
         }
