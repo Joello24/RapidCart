@@ -28,6 +28,5 @@ namespace RapidCart.Web.ViewModels
         public string Phone { get; set; }
         [Required]
         public int PermissionId { get; set; }
-        
     }
 }

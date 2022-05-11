@@ -27,7 +27,7 @@ namespace RapidCart.Web.Controllers
             {
                 return NotFound();
             }
-            return Ok(order);
+            return Ok(order.Data);
         }
         [HttpGet]
         [Route("/api/[controller]/user/{id}", Name = "GetOrdersByUser")]

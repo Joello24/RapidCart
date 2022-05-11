@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RapidCart.Core;
+
 
 namespace RapidCart.DAL.Repositories
 {
@@ -23,6 +27,7 @@ namespace RapidCart.DAL.Repositories
                 try
                 {
                     var item = db.Item.Where(i => i.ItemId == itemId).Include(i => i.OrderItem).FirstOrDefault();
+
                     db.Item.Remove(item);
                     db.SaveChanges();
                 }
