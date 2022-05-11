@@ -11,7 +11,8 @@ namespace RapidCart.Core
     {
         Response<OrderItem> Insert(OrderItem orderItem);
         Response Update(OrderItem orderItem);
-        Response Delete(int itemId);
-        Response<Order> Get(int itemId);
+        Response Delete(int orderId, int itemId);
+        Response<OrderItem> Get(int orderId, int itemId);
+        Response<List<OrderItem>> GetAll(int orderId);
     }
 }
