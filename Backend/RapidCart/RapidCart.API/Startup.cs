@@ -65,8 +65,10 @@ namespace RapidCart.Web
             services.AddTransient<IOrderRepository>(r => new OrderRespository(fac));
             services.AddTransient<IUserRepository>(r => new UserRepository(fac));
             services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
+            services.AddTransient<IItemRepository>(r => new ItemRepository(fac));
+
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
