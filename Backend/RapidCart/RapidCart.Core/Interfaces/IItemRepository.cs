@@ -13,6 +13,7 @@ namespace RapidCart.Core
         Response Update(Item item);
         Response Delete(int itemId);
         Response<Item> Get(int itemId);
+        Response<List<Item>> GetAll();
     }
 }
 
