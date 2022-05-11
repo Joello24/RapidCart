@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RapidCart.Core\RapidCart.Core.csproj" />
     <ProjectReference Include="..\RapidCart.DAL\RapidCart.DAL.csproj" />
   </ItemGroup>

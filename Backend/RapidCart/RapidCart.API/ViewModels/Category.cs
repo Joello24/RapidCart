@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,10 @@ namespace RapidCart.Core
     public class Category
     {
         public int CategoryId { get; set; }
+        
+        [Required]
+        [StringLength(50, ErrorMessage = "Category name cannot be longer than 50 characters.")]
         public string Name { get; set; }
         
-        public List<Item> Item { get; set; }
     }
 }
