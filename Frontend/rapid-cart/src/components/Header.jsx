@@ -43,6 +43,10 @@ function Header(){
                     <a href="signUp/*"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">Sign Up</a>
                 </div>
+                <div>
+                    <a href="cart/*"
+                       className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">View Cart</a>
+                </div>
             </div>
         </nav>
     )

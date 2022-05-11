@@ -7,7 +7,7 @@ function Item(props) {
 
     const addToCart = () => {
         setIsInCart(true);
-        props.addToCart(props.item);
+
     }
     return (
         <div className="relative border bg-white border-gray-200 rounded-xl">
@@ -30,7 +30,7 @@ function Item(props) {
                             className="line-through text-sm text-red-500">${props.price}</span></h4>
                     </div>
                     <div className="flex">
-                        <button onClick={addToCart} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
+                        <button onClick={props.add} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
                             cart
                         </button>
                         <button

@@ -12,12 +12,14 @@ import Login from "./components/Login";
 import {useEffect, useState} from "react";
 import SignUp from "./components/SignUp";
 import Shop from "./components/Shop";
+import Cart from "./components/Cart";
 
 let savedToken = "";
 function App() {
 
     const [token, setToken] = useState();
     const [loggedIn, setLoggedIn] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         var sessionToken = sessionStorage.getItem("sessionToken");
@@ -108,9 +110,10 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="shop/*" element={<Shop />} />
+                <Route path="shop/*" element={<Shop setCartItems={setCartItems} />} />
                 <Route path="login/*" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
                 <Route path="signUp/*" element={<SignUp signUp={handleSignUp} />} />
+                <Route path="cart/*" element={<Cart items={cartItems} />} />
             </Routes>
         </BrowserRouter>
   );
