@@ -59,7 +59,7 @@ namespace RapidCart.Web.Controllers
         }
         
         // TODO: CONFIGURE PERMISSION ID TO BE PASSED IN, CURRENTLY HARD CODED
-
+        
         [HttpPost]
         public IActionResult AddUser([FromBody] ViewUser viewUser)
         {

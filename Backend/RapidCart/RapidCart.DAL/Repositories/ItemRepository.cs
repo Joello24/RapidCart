@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RapidCart.Core;
 
-
 namespace RapidCart.DAL.Repositories
 {
     public class ItemRepository : IItemRepository
