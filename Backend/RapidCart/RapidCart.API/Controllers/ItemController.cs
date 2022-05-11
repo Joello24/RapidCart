@@ -38,7 +38,6 @@ namespace RapidCart.Web.Controllers
             {
                 var item = new Item()
                 {
-                    ItemId = viewItem.ItemId,
                     CategoryId = viewItem.CategoryId,
                     Name = viewItem.Name,
                     Description = viewItem.Description,
