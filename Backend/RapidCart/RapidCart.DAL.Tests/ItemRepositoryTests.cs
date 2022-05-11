@@ -81,7 +81,7 @@ namespace RapidCart.DAL.Tests
         [Test]
         public void DeleteGoodItemTest()
         {
-            var actual = db.Delete(1);
+            var actual = db.Delete(42);
             Assert.IsTrue(actual.Success);
         }
 

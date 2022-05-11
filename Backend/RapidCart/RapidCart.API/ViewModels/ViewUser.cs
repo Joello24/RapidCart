@@ -28,6 +28,5 @@ namespace RapidCart.Core
         public string Phone { get; set; }
         [Required]
         public int PermissionId { get; set; }
-        
     }
 }

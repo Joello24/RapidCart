@@ -57,6 +57,8 @@ namespace RapidCart.Web.Controllers
                 return BadRequest(result.Message);
             }
         }
+        
+        // TODO: CONFIGURE PERMISSION ID TO BE PASSED IN, CURRENTLY HARD CODED
 
         [HttpPost]
         public IActionResult AddUser([FromBody] ViewUser viewUser)
@@ -65,12 +67,12 @@ namespace RapidCart.Web.Controllers
             {
                 var user = new User()
                 {
-                    UserId = viewUser.UserId,
                     FirstName = viewUser.FirstName,
                     LastName = viewUser.LastName,
                     Email = viewUser.Email,
                     Password = viewUser.Password,
                     Phone = viewUser.Phone,
+                    PermissionId = 2,
                 };
                 var result = _userRepository.Insert(user);
                 if (result.Success)
@@ -88,6 +90,8 @@ namespace RapidCart.Web.Controllers
             }
         }
             
+        
+        
         
         [HttpPut, Authorize]
         public IActionResult UpdateUser([FromBody] ViewUser viewUser)

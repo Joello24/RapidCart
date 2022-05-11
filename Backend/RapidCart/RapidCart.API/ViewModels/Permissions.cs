@@ -9,7 +9,6 @@ namespace RapidCart.Core
 {
     public class Permissions
     {
-        [Key]
         public int PermissionId { get; set; }
         public string PermissionName { get; set; }
     }
