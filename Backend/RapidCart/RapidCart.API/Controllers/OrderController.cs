@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RapidCart.Core;
+using RapidCart.Web.ViewModels;
 
 namespace RapidCart.Web.Controllers
 {
