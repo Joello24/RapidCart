@@ -1,9 +1,9 @@
-﻿using RapidCart.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using RapidCart.Core;
 
 namespace RapidCart.DAL.Repositories
 {
@@ -17,26 +17,24 @@ namespace RapidCart.DAL.Repositories
 
         public Response Delete(int itemId)
         {
-            Response response = new Response();
+            var response = new Response();
             using (var db = _dbFactory.GetDbContext())
             {
                 try
                 {
-                    
-                    var item = db.Item.Where(x => x.ItemId == itemId).FirstOrDefault();
+                    var item = db.Item.Where(i => i.ItemId == itemId).Include(i => i.OrderItem).FirstOrDefault();
                     db.Item.Remove(item);
                     db.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
+                    response.Message = e.InnerException == null ? e.Message : e.InnerException.Message;
                     response.Success = false;
-                    response.Message = ex.Message;
                     return response;
                 }
-                response.Success = true;
-                return response;
-
-             }
+            }
+            response.Success = true;
+            return response;
         }
 
         public Response<Item> Get(int itemId)
