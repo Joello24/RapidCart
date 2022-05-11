@@ -19,6 +19,13 @@ function App() {
     const [token, setToken] = useState();
     const [loggedIn, setLoggedIn] = useState(false);
 
+    useEffect(() => {
+        var sessionToken = sessionStorage.getItem("sessionToken");
+        if(sessionToken){
+            setToken(sessionToken);
+            setLoggedIn(true);
+        }
+      }, []); 
 
     const handleLogin = (login) => {
         const loginInput = JSON.stringify({
@@ -34,7 +41,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5000/api/auth/login", req)
+        fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -48,6 +55,7 @@ function App() {
                 console.log("Saved")
                 console.log(savedToken);
                 setToken(json.token);
+                sessionStorage.setItem("sessionToken", token);
                 console.log("Returned")
                 console.log(json.token);
             })
@@ -70,7 +78,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5000/api/user", req)
+            return fetch("http://localhost:5051/api/user", req)
                 .then(response => {
                     if (response.status !== 200 || response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
