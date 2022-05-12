@@ -13,9 +13,14 @@ function Shop (props) {
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
+    const [searchResultBool, setSearchResultBool] = useState(false);
+
     useEffect(() => {
         GetItems();
     }, [setItems]);
+    useEffect(() => {
+        HandleItemSearch();
+    }, [searchResults]);
 
     const addToCart = (item) => {
         setCart([...cart, item]);
@@ -53,12 +58,14 @@ function Shop (props) {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
                         GetItems();
+                        setSearchResultBool(true);
                         return Promise.reject("response is not 200 OK");
                     }
                     return response.json();
                 })
         };
         HandleSearchResults().then(data => {
+            setSearchResultBool(false)
             setSearchResults(data);
             setItems(data);
             console.log(data);
@@ -74,8 +81,8 @@ function Shop (props) {
     return (
         <div className="h-screen w-screen bg-gray-50 p-5">
             <div className="my-2">
-                <label htmlFor="search"></label>
                 <input placeholder=" Search..." className="w-1/3 rounded py-2 border-b-2 border-gray-600 outline-none focus:border-green-400" type="text" onChange={HandleChange}/>
+                <label className="text-red-600 font-bold" htmlFor="search">{searchResultBool ? " No results found":""}</label>
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-5">
