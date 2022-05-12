@@ -13,8 +13,14 @@ function Login(props){
             UserName: username,
             Password: password
         };
-        props.Login(login);
-        props.goBack();
+
+        async function waitForLogin() {
+             await props.login(login);
+        }
+
+        waitForLogin().then(() => {
+            props.goBack();
+        });
     }
     const handleChangeUser = function (evt) {
         setUsername(evt.target.value);
