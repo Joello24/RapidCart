@@ -105,10 +105,10 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
-            <Header/>
+            <Header loggedIn={loggedIn}/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="login/*" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
+                <Route path="login/*" element={<Login login={handleLogin} />} />
                 <Route path="signUp/*" element={<SignUp signUp={handleSignUp} />} />
             </Routes>
         </BrowserRouter>

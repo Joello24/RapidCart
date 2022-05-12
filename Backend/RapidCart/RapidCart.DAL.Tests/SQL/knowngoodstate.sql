@@ -45,7 +45,7 @@ BEGIN
     insert into [Permissions] (PermissionName)
     values ('Customer'), ('Admin');
 
-    insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'gjost0@trellian.com', 'hFMNCbBPRMzm', '332-411-2147',2);
+    insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'sa@123.com', 'e5857b335afdf35ca81a110bc81f38682f8a89892cc597f5398dfef82d42b513', '332-411-2147',2);
     insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Trude', 'Bes', 'tbes1@sogou.com', 'okz1XfRsv3', '815-234-2158',2);
     insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Lew', 'Dedmam', 'ldedmam2@yale.edu', 'JdO5Vu4e', '286-724-9302',2);
     insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Fawne', 'MacGinney', 'fmacginney3@ox.ac.uk', 'kUkvzLfV', '547-731-6904',2);
