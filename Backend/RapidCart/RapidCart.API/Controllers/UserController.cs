@@ -71,7 +71,7 @@ namespace RapidCart.Web.Controllers
                     FirstName = viewUser.FirstName,
                     LastName = viewUser.LastName,
                     Email = viewUser.Email,
-                    Password = viewUser.Password,
+                    Password = LoginService.GetPasswordHash(viewUser.Password).Data,
                     Phone = viewUser.Phone,
                     PermissionId = 2,
                 };

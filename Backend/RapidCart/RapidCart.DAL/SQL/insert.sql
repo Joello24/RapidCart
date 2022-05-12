@@ -13,8 +13,8 @@ delete from [Address] where 1=1;
 DBCC CHECKIDENT (Item, RESEED, 0);
 delete from Item where 1=1;
 DBCC CHECKIDENT (Item, RESEED, 0);
-delete from Permissions where 1=1;
-DBCC CHECKIDENT (Permissions, RESEED, 0);
+delete from [Permissions] where 1=1;
+DBCC CHECKIDENT ([Permissions], RESEED, 0);
 
 delete from Category where 1=1;
 DBCC CHECKIDENT(Category, RESEED, 0);
@@ -36,11 +36,13 @@ insert into Category ( [Name]) values ( 'Cleaners');
 insert into Category ( [Name]) values ( 'Paper Goods');
 insert into Category ( [Name]) values ( 'Personal Care');
 insert into Category ( [Name]) values ( 'Other');
-go
+go 
+
 insert into [Permissions] (PermissionName)
 values ('Customer'), ('Admin');
 go
-insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'gjost0@trellian.com', 'hFMNCbBPRMzm', '332-411-2147',2);
+
+insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Gus', 'Jost', 'sa@123.com', 'e5857b335afdf35ca81a110bc81f38682f8a89892cc597f5398dfef82d42b513', '332-411-2147',2);
 insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Trude', 'Bes', 'tbes1@sogou.com', 'okz1XfRsv3', '815-234-2158',2);
 insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Lew', 'Dedmam', 'ldedmam2@yale.edu', 'JdO5Vu4e', '286-724-9302',2);
 insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Fawne', 'MacGinney', 'fmacginney3@ox.ac.uk', 'kUkvzLfV', '547-731-6904',2);
@@ -92,7 +94,6 @@ insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId)
 insert into [User] ( FirstName, LastName, Email, [Password], Phone,PermissionId) values ( 'Steffen', 'Yezafovich', 'syezafovich1d@youku.com', 'EX9KfAZCiv2', '506-202-7256',2);
 go
 
--- INSERTS FOR TESTING CLIENT SIDE
 set IDENTITY_INSERT [Address] on;
 insert into [Address] (AddressId, UserId, Street, City, [State], PostalCode, CountryCode) values (1, 1, '448 Sloan Circle', 'Minneapolis', 'MN', 55102, 'US');
 insert into [Address] (AddressId, UserId, Street, City, [State], PostalCode, CountryCode) values (2, 2, '747 Vermont Point', 'Minneapolis', 'MN', 55404, 'US');
@@ -145,12 +146,11 @@ insert into [Address] (AddressId, UserId, Street, City, [State], PostalCode, Cou
 insert into [Address] (AddressId, UserId, Street, City, [State], PostalCode, CountryCode) values (49, 49, '6 Division Avenue', 'Minneapolis', 'MN', 55404, 'US');
 insert into [Address] (AddressId, UserId, Street, City, [State], PostalCode, CountryCode) values (50, 50, '115 Merry Terrace', 'St. Paul', 'MN', 55404, 'US');
 set IDENTITY_INSERT [Address] off;
-
 go
+
 insert into [Order] (UserId, TotalCost, DateCreated) values (1, 10, '3/8/2022');
 insert into [Order] (UserId, TotalCost, DateCreated) values (2, 92, '3/11/2022');
 insert into [Order] (UserId, TotalCost, DateCreated) values (3, 68, '9/19/2021');
-
 go
 
 insert into Item (CategoryId, [Name], [Description], Price, Inventory) values (12, 'Yogurt - Plain', 'felis sed lacus morbi', 83.27, 84);
@@ -355,6 +355,7 @@ insert into Item (CategoryId, [Name], [Description], Price, Inventory) values (5
 insert into Item (CategoryId, [Name], [Description], Price, Inventory) values (2, 'Sauce - Hp', 'consectetuer adipiscing elit proin interdum', 42.57, 41);
 insert into Item (CategoryId, [Name], [Description], Price, Inventory) values (4, 'Soup - Campbells - Tomato', 'venenatis lacinia aenean sit amet', 38.48, 55);
 go
+
 insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (3, 42, 1, 5, 5);
 insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (2, 142, 4, 30, 120);
 insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (1, 156, 3, 21, 63);

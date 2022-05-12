@@ -117,7 +117,7 @@ function App() {
 
   return (
         <div>
-            <Header/>
+            <Header loggedIn={loggedIn}/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
