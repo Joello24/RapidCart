@@ -38,7 +38,7 @@ namespace RapidCart.Web.Controllers
             {
                 return NotFound();
             }
-            return Ok(orders);
+            return Ok(orders.Data);
         }
 
         [HttpPost]
