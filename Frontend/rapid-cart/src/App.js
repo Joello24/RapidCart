@@ -7,6 +7,7 @@ import {
     Route,
     Link,
     Navigate,
+    useNavigate,
 } from "react-router-dom";
 import Login from "./components/Login";
 import {useEffect, useState} from "react";
@@ -66,7 +67,7 @@ function App() {
                 sessionStorage.setItem("sessionToken", token);
                 console.log("Returned")
                 console.log(json.token);
-            })
+            })   
     }
     const handleSignUp = (signUp) => {
         const signUpInput = JSON.stringify({
@@ -111,6 +112,8 @@ function App() {
         sessionStorage.setItem("sessionCart", JSON.stringify(cartItems));
     }
 
+    const navigate = useNavigate();
+
     // if(!token) {
     //     return <Login login={handleLogin} />
     // }
@@ -121,9 +124,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
-                <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
-                <Route path="/signUp" element={<SignUp signUp={handleSignUp} />} />
-                <Route path="/cart" element={<Cart items={cartItems} />} />
+                <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
+                <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
+                <Route path="/cart" element={<Cart items={cartItems}/>} />
                 <Route path="/orders" element={<Orders />} />
             </Routes>
         </div>
