@@ -31,6 +31,26 @@ namespace RapidCart.Web.Controllers
                 return BadRequest(item.Message);
             }
         }
+        [HttpGet]
+        public IActionResult GetItems()
+        {
+            var items = _itemRepository.GetAll();
+            if (items.Success)
+            {
+                if(items.Data.Count > 0)
+                {
+                    return Ok(items.Data);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return BadRequest(items.Message);
+            }
+        }
         [HttpPost]
         public IActionResult Insert([FromBody] ViewItem viewItem)
         {
@@ -38,7 +58,6 @@ namespace RapidCart.Web.Controllers
             {
                 var item = new Item()
                 {
-                    ItemId = viewItem.ItemId,
                     CategoryId = viewItem.CategoryId,
                     Name = viewItem.Name,
                     Description = viewItem.Description,
@@ -54,7 +73,6 @@ namespace RapidCart.Web.Controllers
                 {
                     return BadRequest(result.Message);
                 }
-
             }
             else
             {

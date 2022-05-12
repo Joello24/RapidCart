@@ -11,13 +11,27 @@ import {
 import Login from "./components/Login";
 import {useEffect, useState} from "react";
 import SignUp from "./components/SignUp";
+import Shop from "./components/Shop";
+import Cart from "./components/Cart";
 
 let savedToken = "";
 function App() {
 
     const [token, setToken] = useState();
     const [loggedIn, setLoggedIn] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
+    useEffect(() => {
+        var sessionToken = sessionStorage.getItem("sessionToken");
+        if(sessionToken){
+            setToken(sessionToken);
+            setLoggedIn(true);
+        }
+        var sessionCart = sessionStorage.getItem("sessionCart");
+        if(sessionCart){
+            setCartItems(JSON.parse(sessionCart));
+        }
+      }, []); 
 
     const handleLogin = (login) => {
         const loginInput = JSON.stringify({
@@ -33,7 +47,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5000/api/auth/login", req)
+        fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -47,6 +61,7 @@ function App() {
                 console.log("Saved")
                 console.log(savedToken);
                 setToken(json.token);
+                sessionStorage.setItem("sessionToken", token);
                 console.log("Returned")
                 console.log(json.token);
             })
@@ -69,7 +84,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5000/api/user", req)
+            return fetch("http://localhost:5051/api/user", req)
                 .then(response => {
                     if (response.status !== 200 || response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -89,22 +104,26 @@ function App() {
             handleLogin(user);
         })
     }
-
-    if(!token) {
-        return <Login login={handleLogin} />
+    const AddToCart = (item) => {
+        setCartItems([...cartItems, item]);
+        sessionStorage.setItem("sessionCart", JSON.stringify(cartItems));
     }
 
+    // if(!token) {
+    //     return <Login login={handleLogin} />
+    // }
+
   return (
-    <div className="App">
-        <BrowserRouter>
+        <div>
             <Header/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="login/*" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
-                <Route path="signUp/*" element={<SignUp signUp={handleSignUp} />} />
+                <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
+                <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
+                <Route path="/signUp" element={<SignUp signUp={handleSignUp} />} />
+                <Route path="/cart" element={<Cart items={cartItems} />} />
             </Routes>
-        </BrowserRouter>
-    </div>
+        </div>
   );
 }
 

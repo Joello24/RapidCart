@@ -67,6 +67,26 @@ namespace RapidCart.DAL.Repositories
             return response;
         }
 
+        public Response<List<Item>> GetAll()
+        {
+            Response<List<Item>> response = new Response<List<Item>>();
+            using (var db = _dbFactory.GetDbContext())
+            {
+                try
+                {
+                    response.Data = db.Item.ToList();
+                }
+                catch (Exception ex)
+                {
+                    response.Message = ex.Message;
+                    response.Success = false;
+                    return response;
+                }
+            }
+            response.Success = true;
+            return response;
+        }
+
         public Response<Item> Insert(Item item)
         {
             Response<Item> response = new Response<Item>();

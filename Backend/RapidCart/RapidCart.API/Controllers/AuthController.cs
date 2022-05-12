@@ -27,8 +27,8 @@ namespace RapidCart.Web.Controllers
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
                 var tokeOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:2000",
-                    audience: "http://localhost:2000",
+                    issuer: "http://localhost:3000",
+                    audience: "http://localhost:3000",
                     claims: new List<Claim>(),
                     expires: DateTime.Now.AddMinutes(300),
                     signingCredentials: signinCredentials
