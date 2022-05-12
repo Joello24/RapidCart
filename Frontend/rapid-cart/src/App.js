@@ -36,7 +36,7 @@ function App() {
         }
       }, []); 
 
-    const handleLogin = (login) => {
+    const handleLogin = async (login, goBack) => {
         const loginInput = JSON.stringify({
             "UserName": login.UserName,
             "Password": login.Password
@@ -67,7 +67,8 @@ function App() {
                 sessionStorage.setItem("sessionToken", token);
                 console.log("Returned")
                 console.log(json.token);
-            })   
+                goBack();
+            })  
     }
     const handleSignUp = (signUp) => {
         const signUpInput = JSON.stringify({
