@@ -15,7 +15,7 @@ namespace RapidCart.Web.Controllers
         }
 
         [HttpGet]
-        [Route("/api/[controller]/{id}")]
+        [Route("/api/[controller]/{id}", Name= "GetAddress")]
         public IActionResult GetAddress(int id)
         {
             var result = _addressRepository.Get(id);
@@ -98,7 +98,7 @@ namespace RapidCart.Web.Controllers
                 var result = _addressRepository.Insert(address);
                 if (result.Success)
                 {
-                    return CreatedAtAction(nameof(Address), new { id = address.AddressId }, address);
+                    return CreatedAtRoute("GetAddress", new { id = address.AddressId }, address);
                 }
                 else
                 {

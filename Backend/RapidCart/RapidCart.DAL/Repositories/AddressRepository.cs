@@ -1,5 +1,5 @@
 ﻿using System;
-using RapidCart.Core.Entities;
+using RapidCart.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace RapidCart.DAL.Repositories
         {
             _dbFactory = dbFactory;
         }
-        public Response<Address> Insert(AddressRepository address)
+        public Response<Address> Insert(Address address)
         {
             var response = new Response<Address>();
 
@@ -34,6 +34,7 @@ namespace RapidCart.DAL.Repositories
             }
             return response;
         }
+        
 
         public Response Update(Address address)
         {
@@ -43,7 +44,7 @@ namespace RapidCart.DAL.Repositories
             {
                 using (var db = _dbFactory.GetDbContext())
                 {
-                    db.address.Update(address);
+                    db.Address.Update(address);
                     db.SaveChanges();
                     response.Success = true;
                 }
@@ -67,7 +68,9 @@ namespace RapidCart.DAL.Repositories
                 {
                     var address = new Address() { AddressId = addressId };
                     db.Address.Attach(address);
-                    db.Address.Delete(addressId);
+                    
+                    //var a = db.Address.Where(i => i.AddressId == addressId);
+                    db.Address.Remove(address);
                     db.SaveChanges();
                     response.Success = true;
                 }

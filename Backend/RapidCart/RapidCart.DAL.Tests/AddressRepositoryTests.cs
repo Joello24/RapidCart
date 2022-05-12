@@ -46,7 +46,7 @@ namespace RapidCart.DAL.Tests
 
         }
 
-        [Test
+        [Test]
         public void TestUpdateAddress()
         {
             Address address = db.Get(2).Data;
@@ -60,21 +60,14 @@ namespace RapidCart.DAL.Tests
         [Test]
         public void TestGetAddressByAddressId()
         {
-            Assert.AreEqual(1, db.AddressId(1).Data.Count);
-            Assert.AreEqual(1, db.AddressId(2).Data.Count);
-            Assert.AreEqual(1, db.AddressId(3).Data.Count);
-            Assert.AreEqual(1, db.AddressId(4).Data.Count);
-            Assert.AreEqual(1, db.AddressId(5).Data.Count);
+            Assert.AreEqual(1, db.Get(1).Data.AddressId);
         }
 
         [Test]
         public void TestDeleteAddressId()
         {
             db.Delete(1);
-            Assert.AreEqual(0, db.addressId(1).Data.Count);
-            Assert.AreEqual(null, db.Get(1).Data);
-
-
+            Assert.AreEqual(false, db.Get(1).Success);
         }
     }
 }
