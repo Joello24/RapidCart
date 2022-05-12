@@ -27,6 +27,10 @@ function App() {
             setToken(sessionToken);
             setLoggedIn(true);
         }
+        var sessionCart = sessionStorage.getItem("sessionCart");
+        if(sessionCart){
+            setCartItems(JSON.parse(sessionCart));
+        }
       }, []); 
 
     const handleLogin = (login) => {
@@ -100,22 +104,26 @@ function App() {
             handleLogin(user);
         })
     }
+    const AddToCart = (item) => {
+        setCartItems([...cartItems, item]);
+        sessionStorage.setItem("sessionCart", JSON.stringify(cartItems));
+    }
 
     // if(!token) {
     //     return <Login login={handleLogin} />
     // }
 
   return (
-        <BrowserRouter>
+        <div>
             <Header/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="shop/*" element={<Shop setCartItems={setCartItems} />} />
-                <Route path="login/*" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
-                <Route path="signUp/*" element={<SignUp signUp={handleSignUp} />} />
-                <Route path="cart/*" element={<Cart items={cartItems} />} />
+                <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
+                <Route path="/login" element={loggedIn ? <Navigate to="/" /> : <Login login={handleLogin} />} />
+                <Route path="/signUp" element={<SignUp signUp={handleSignUp} />} />
+                <Route path="/cart" element={<Cart items={cartItems} />} />
             </Routes>
-        </BrowserRouter>
+        </div>
   );
 }
 

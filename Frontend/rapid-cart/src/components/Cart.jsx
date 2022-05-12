@@ -3,12 +3,12 @@
 
     <div className="container mx-auto mt-10">
         in cart
-        {props.items.map(item => (
-            <div key={item.id}>
-                <h3>{item.name}</h3>
-                <p>{item.price}</p>
-            </div>
-        ))}
+        {/*{props.items.map(item => (*/}
+        {/*    <div key={item.id}>*/}
+        {/*        <h3>{item.name}</h3>*/}
+        {/*        <p>{item.price}</p>*/}
+        {/*    </div>*/}
+        {/*))}*/}
         {/*<div className="flex shadow-md my-10">*/}
         {/*    <div className="w-3/4 bg-white px-10 py-10">*/}
         {/*        <div className="flex justify-between border-b pb-8">*/}

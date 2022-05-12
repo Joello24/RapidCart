@@ -7,12 +7,18 @@ function Item(props) {
     const [count, setCount] = useState(1);
 
     const addToCart = () => {
+        props.item.count = count;
         setIsInCart(true);
+        props.add();
 
     }
     const incrementCount = () => {
         setCount(count + 1);
     }
+    const decrementCount = () => {
+        setCount(count - 1);
+    }
+
     return (
         <div className="relative border bg-white border-gray-200 rounded-xl">
             <div className="relative border bg-white border-gray-200 rounded-xl">
@@ -34,10 +40,10 @@ function Item(props) {
                             className="line-through text-sm text-red-500">${props.price}</span></h4>
                     </div>
                     <div className="flex">
-                        <button onClick={props.add} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
+                        <button onClick={addToCart} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
                             cart
                         </button>
-                        <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
+                        <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={decrementCount} >
                             -
                         </button>
                         <span className="text-sm">{count}</span>
