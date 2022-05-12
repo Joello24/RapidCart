@@ -26,11 +26,11 @@ function Header({loggedIn}){
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">
                         Home
                     </a>
-                    <a href="agents/*"
+                    <a href="/shop"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">
                         Shop
                     </a>
-                    <a href="rapid-cart/src/components/Header#responsive-header"
+                    <a href="/orders"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">
                         Account/Orders
                     </a>
@@ -46,8 +46,12 @@ function Header({loggedIn}){
                     <a href="signUp/*"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">Sign Up</a>}
                 </div>
+                <div>
+                    <a href="/cart"
+                       className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">View Cart</a>
+                </div>
             </div>
         </nav>
-    )
-}
+        );
+    }
 export default Header;
