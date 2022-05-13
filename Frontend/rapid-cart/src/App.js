@@ -123,13 +123,23 @@ function App() {
 
     const navigate = useNavigate();
 
+    // TODO: LOGOUT SEEMS TO BE WORKING, BUT IT REDIRECTS TO THE LOGIN PAGE INSTEAD OF HOME PAGE
+    const handleLogout = () => {
+        setLoggedIn(false);
+        sessionStorage.removeItem("sessionToken");
+        sessionStorage.removeItem("sessionUser");
+        setToken(null);
+        setUser(null);
+        navigate("/");
+    }
+
     // if(!token) {
     //     return <Login login={handleLogin} />
     // }
 
   return (
         <div>
-            <Header loggedIn={loggedIn}/>
+            <Header loggedIn={loggedIn} handleLogout={handleLogout}/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
