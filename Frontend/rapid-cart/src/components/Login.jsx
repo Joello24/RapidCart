@@ -14,7 +14,7 @@ function Login(props){
             Password: password
         };
 
-        props.login(login,props.goBack);
+        props.login(login,props.goBack)
     }
     const handleChangeUser = function (evt) {
         setUsername(evt.target.value);

@@ -54,7 +54,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5051/api/auth/login", req)
+        fetch("http://localhost:5000/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -89,12 +89,13 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5051/api/user", req)
+            return fetch("http://localhost:5000/api/user", req)
                 .then(response => {
-                    if (response.status !== 200 || response.status !== 201) {
+                    if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
                         return Promise.reject("response is not 200 OK");
                     }
+
                     return response.json();
                 })
         }
