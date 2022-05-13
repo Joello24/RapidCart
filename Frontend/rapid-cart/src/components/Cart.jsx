@@ -1,5 +1,22 @@
 ﻿import {useEffect, useState} from "react";
 
+const orderItemURL = "http://localhost:5000/api/orderitem";
+const orderURL = "http://localhost:5000/api/order";
+
+// ORDER ITEM BODY EXAMPLE
+// {
+//     "OrderId" : "1",
+//     "ItemId" : "1",
+//     "ItemPrice" : "500",
+//     "Quantity" : "2",
+//     "TotalCost" : "1000"
+// }
+// ORDER BODY EXAMPLE
+// {
+//     "UserId" : "1",
+//     "TotalCost" : "500",
+//     "DateCreated" : "2022-01-01"
+// }
 function Cart(props) {
 
     const [cartItems, setCartItems] = useState([props.items]);
@@ -39,6 +56,91 @@ function Cart(props) {
         );
         setCartTotal(total);
         return total;
+    }
+
+    const SubmitOrder = () => {
+        const orderHeaders = {
+            "Content-Type": "application/json",
+        }
+        const today = new Date();
+        const year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        if(month < 10) {
+            month = "0" + month;
+        }
+        const day = today.getDate();
+
+
+        const date = year + "-" + month + "-" + day;
+
+        const addBody = JSON.stringify({
+            "UserId" : "1",
+            "TotalCost" : cartTotal,
+            "DateCreated" : date
+        });
+        const add = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: addBody
+        };
+        function postOrder() {
+            return fetch(orderURL,add)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        postOrder().then(data => {
+            console.log(data);
+            AddOrderItems(data.data.orderId);
+        });
+        function AddOrderItems(orderId) {
+            cartItems.forEach(item => {
+                const orderItemBody = JSON.stringify({
+                    "OrderId" : orderId,
+                    "ItemId" : item.itemId,
+                    "ItemPrice" : item.price,
+                    "Quantity" : item.count,
+                    "TotalCost" : item.price * item.count
+                });
+                const orderItem = {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: orderItemBody
+                };
+                function postOrderItem() {
+                    return fetch(orderItemURL,orderItem)
+                        .then(response => {
+                            if (response.status !== 200 && response.status !== 201) {
+                                console.log(`Bad status: ${response.status}`);
+                                return Promise.reject("response is not 200 OK");
+                            }
+                            return response.json();
+                        })
+                };
+                postOrderItem().then(data => {
+                    console.log(data);
+                });
+            });
+        }
+
+        const orderItemHeaders = {
+
+        }
+
+
+
+
+
     }
 
     return (
@@ -127,7 +229,7 @@ function Cart(props) {
                     {/*TODO: CHECKOUT SHOULD SUBMIT AN ORDER TO DATEBASE*/}
 
                     <button
-                        className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout
+                        className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full" onClick={SubmitOrder}>Checkout
                     </button>
                 </div>
             </div>
