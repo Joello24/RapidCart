@@ -17,10 +17,10 @@ import Cart from "./components/Cart";
 import Orders from "./components/Orders";
 
 
-let savedToken = "";
 function App() {
 
     const [token, setToken] = useState();
+    const [user, setUser] = useState();
     const [loggedIn, setLoggedIn] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
@@ -29,6 +29,10 @@ function App() {
         if(sessionToken){
             setToken(sessionToken);
             setLoggedIn(true);
+        }
+        const sessionUser = sessionStorage.getItem("sessionUser");
+        if(sessionUser){ 
+            setUser(JSON.parse(sessionUser));
         }
         const sessionCart = sessionStorage.getItem("sessionCart");
         if(sessionCart){
@@ -60,13 +64,10 @@ function App() {
                 return response.json();
             })
             .then(json => {
-                savedToken = json.token;
-                console.log("Saved")
-                console.log(savedToken);
                 setToken(json.token);
                 sessionStorage.setItem("sessionToken", token);
-                console.log("Returned")
-                console.log(json.token);
+                setUser(json.user);
+                sessionStorage.setItem("sessionUser", JSON.stringify(json.user));
                 goBack();
             })  
     }

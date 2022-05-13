@@ -45,7 +45,10 @@ namespace RapidCart.Web.Controllers
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new { 
+                                Token = tokenString,
+                                User = response.Data
+                                });
             }
             else
             {

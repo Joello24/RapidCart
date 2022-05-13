@@ -12,5 +12,6 @@ namespace RapidCart.Core
         Response Update(User user);
         Response Delete(int userId);
         Response<User> Get(int userId);
+        Response<User> GetByEmail(string email);
     }
 }
