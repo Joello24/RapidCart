@@ -30,9 +30,7 @@ namespace RapidCart.Web.Controllers
                 return BadRequest("Invalid request");
             }
             var response = _userRepository.Get(1);      // implement new GetByUsername()
-
             var inputHash = LoginService.GetPasswordHash(user.Password);
-
 
             if (inputHash.Data == response.Data.Password)
             {
@@ -47,7 +45,10 @@ namespace RapidCart.Web.Controllers
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new { 
+                                Token = tokenString,
+                                User = response.Data
+                                });
             }
             else
             {

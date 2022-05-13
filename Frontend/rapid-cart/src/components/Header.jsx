@@ -2,7 +2,11 @@
 import './styles/welcomepage.css';
 
 
-function Header({loggedIn}){
+function Header({loggedIn,handleLogout}) {
+
+    const logout = () => {
+        handleLogout();
+    }
     return(
         <nav className="flex items-center justify-between flex-wrap bg-green-500 p-6">
             <div className="flex items-center flex-no-shrink text-white mr-6">
@@ -33,18 +37,18 @@ function Header({loggedIn}){
                     </a>
                     <a href="/orders"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">
-                        Account/Orders
+                        My Orders
                     </a>
                 </div>
                 <div>
                     {loggedIn ? <a href=""
-                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">Log Out</a> :
-                        <a href="login/*"
+                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white" onClick={logout}>Log Out</a> :
+                        <a href="/login"
                         className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">Login</a>}
                 </div>
                 <div>
                     {loggedIn ? "" :
-                    <a href="signUp/*"
+                    <a href="/signUp"
                        className="block mt-4 px-4 py-2 lg:inline-block lg:mt-0 text-white hover:text-black mr-8 border rounded border-white">Sign Up</a>}
                 </div>
                 <div>
