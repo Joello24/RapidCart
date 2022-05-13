@@ -60,13 +60,7 @@ function Order(props) {
             
             
 
-
-        </div>
-<<<<<<< HEAD
-        
-
-=======
->>>>>>> 7a9b5a09afc588b023a4744c8c762f5973d341fe
+</div>
     )
 }
 export default Order;
