@@ -1,4 +1,5 @@
 ﻿import {useEffect, useState} from "react";
+import './styles/welcomepage.css';
 
 
 function Home(){

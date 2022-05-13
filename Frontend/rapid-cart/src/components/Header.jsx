@@ -1,4 +1,5 @@
 ﻿import logo from './../logo.png';
+import './styles/welcomepage.css';
 
 
 function Header({loggedIn}){
