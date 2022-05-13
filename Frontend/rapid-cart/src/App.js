@@ -105,7 +105,8 @@ function App() {
             console.log(json);
             const user = {
                 "UserName" : json.UserName,
-                "Password" : json.Password
+                "Password" : json.Password,
+                "Email" : json.Email,
             }
             handleLogin(user);
         })
