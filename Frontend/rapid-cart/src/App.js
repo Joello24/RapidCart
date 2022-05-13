@@ -113,6 +113,11 @@ function App() {
         setCartItems([...cartItems, item]);
         sessionStorage.setItem("sessionCart", JSON.stringify(cartItems));
     }
+    const RemoveFromCart = (item) => {
+        const newCart = cartItems.filter(cartItem => cartItem.itemId !== item.itemId);
+        setCartItems(newCart);
+        sessionStorage.setItem("sessionCart", JSON.stringify(newCart));
+    }
 
     const navigate = useNavigate();
 
@@ -128,7 +133,7 @@ function App() {
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
                 <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
-                <Route path="/cart" element={<Cart items={cartItems}/>} />
+                <Route path="/cart" element={<Cart items={cartItems} removeFromCart={RemoveFromCart}/>} />
                 <Route path="/orders" element={<Orders />} />
             </Routes>
         </div>

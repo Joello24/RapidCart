@@ -13,6 +13,7 @@ function Login(props){
             UserName: username,
             Password: password
         };
+
         props.login(login,props.goBack);
     }
     const handleChangeUser = function (evt) {

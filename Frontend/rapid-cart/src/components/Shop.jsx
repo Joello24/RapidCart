@@ -20,7 +20,7 @@ function Shop (props) {
     }, [setItems]);
     useEffect(() => {
         HandleItemSearch();
-    }, [searchResults]);
+    }, [searchResultBool]);
 
     const addToCart = (item) => {
         setCart([...cart, item]);
