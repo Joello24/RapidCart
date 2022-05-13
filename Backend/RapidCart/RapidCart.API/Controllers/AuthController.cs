@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RapidCart.Core;
+using RapidCart.Web.ViewModels;
 
 namespace RapidCart.Web.Controllers
 {
@@ -13,15 +15,24 @@ namespace RapidCart.Web.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly IUserRepository _userRepository;
+
+        public AuthController(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         [HttpPost, Route("login")]
         public IActionResult Login(LoginModel user)
         {
-            if(user==null)
+            if (user == null)
             {
                 return BadRequest("Invalid request");
             }
+            var response = _userRepository.Get(1);      // implement new GetByUsername()
+            var inputHash = LoginService.GetPasswordHash(user.Password);
 
-            if(user.UserName == "sa" && user.Password == "abc@123")
+            if (inputHash.Data == response.Data.Password)
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -34,7 +45,10 @@ namespace RapidCart.Web.Controllers
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new { 
+                                Token = tokenString,
+                                User = response.Data
+                                });
             }
             else
             {

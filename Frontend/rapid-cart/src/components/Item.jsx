@@ -10,7 +10,6 @@ function Item(props) {
         props.item.count = count;
         setIsInCart(true);
         props.add();
-
     }
     const incrementCount = () => {
         setCount(count + 1);

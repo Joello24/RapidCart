@@ -67,6 +67,33 @@ namespace RapidCart.DAL.Repositories
             response.Success = true;
             return response;
         }
+
+        public Response<User> GetByEmail(string email)
+        {
+            Response<User> response = new Response<User>();
+            using (var db = _dbFactory.GetDbContext())
+            {
+                try
+                {
+                    response.Data = db.User.FirstOrDefault(x => x.Email == email);
+                    if (response.Data == null)
+                    {
+                        response.Message = $"User with email: {email} not found";
+                        response.Success = false;
+                        return response;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Message = ex.InnerException == null ? ex.Message : ex.InnerException.Message;
+                    response.Success = false;
+                    return response;
+                }
+            }
+            response.Success = true;
+            return response;
+        }
+
         public Response<User> Insert(User user)
         {
             Response<User> response = new Response<User>();

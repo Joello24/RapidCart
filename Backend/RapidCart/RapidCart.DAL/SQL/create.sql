@@ -11,7 +11,7 @@ GO
 USE RapidCart;
 GO
 
-CREATE TABLE Permissions(
+CREATE TABLE [Permissions](
                             PermissionId int primary key identity(1,1),
                             PermissionName varchar(50) not null
 )
@@ -23,7 +23,7 @@ CREATE TABLE [User] (
                         Email nvarchar(50) not null,
                         [Password] nvarchar(250) not null,
                         Phone nvarchar(20) not null,
-                        PermissionId int not null foreign key references Permissions(PermissionId)
+                        PermissionId int not null foreign key references [Permissions](PermissionId)
 )
 GO
 

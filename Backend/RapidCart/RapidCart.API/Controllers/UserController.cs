@@ -38,6 +38,21 @@ namespace RapidCart.Web.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/api/[controller]/{id}")]
+        public IActionResult GetByEmail(string email)
+        {
+            var user = _userRepository.GetByEmail(email);
+            if (user.Success)
+            {
+                return Ok(user.Data);
+            }
+            else
+            {
+                return BadRequest(user.Message);
+            }
+        }
+
         // Response Delete(int userId);
         [HttpDelete("{UserId}"), Authorize]
         public IActionResult DeleteUser(int userId)
@@ -71,7 +86,7 @@ namespace RapidCart.Web.Controllers
                     FirstName = viewUser.FirstName,
                     LastName = viewUser.LastName,
                     Email = viewUser.Email,
-                    Password = viewUser.Password,
+                    Password = LoginService.GetPasswordHash(viewUser.Password).Data,
                     Phone = viewUser.Phone,
                     PermissionId = 2,
                 };
