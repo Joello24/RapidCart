@@ -1,7 +1,11 @@
 ﻿import {useEffect, useState} from "react";
 
+
+
 function Order(props) {
 
+
+    
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -9,7 +13,7 @@ function Order(props) {
     }, [setItems]);
 
     const GetItems = () => {
-        const url = "http://localhost:5000/api/orderitem/GetAll/" + props.orderNum;
+        const url = "http://localhost:5051/api/orderitem/GetAll/" + props.orderNum;
         const get = {
             method: 'GET',
             headers: {
@@ -27,10 +31,14 @@ function Order(props) {
             .catch(err => console.log(err));
     }
 
+
+
+   
     const [isHidden, setIsHidden] = useState(true);
     return (
+        
         <div >
-
+                 
             {/*itemId: 156*/}
             {/*itemPrice: 21*/}
             {/*orderId: 1*/}
@@ -49,7 +57,12 @@ function Order(props) {
                     </div>
                 )
             )}
+            
+            
+
+
         </div>
+        
 
     )
 }
