@@ -85,6 +85,7 @@ function Shop (props) {
                 <label className="text-red-600 font-bold" htmlFor="search">{searchResultBool ? " No results found":""}</label>
             </div>
 
+            {/*TODO: DEACTIVATE ADD TO CART AFTER ITEM IS ALREADY ADDED TO CART*/}
             <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-5">
                 {items.map(item => (
                     <Item key={item.itemId} name={item.name} discount={.15} price={item.price} inventory={item.inventory} item={item} add={() => addToCart(item)} />
