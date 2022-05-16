@@ -26,7 +26,6 @@ namespace RapidCart.Web.ViewModels
         [Required]
         [StringLength(20, ErrorMessage = "Phone must be less than 50 characters.")]
         public string Phone { get; set; }
-        [Required]
         public int PermissionId { get; set; }
     }
 }

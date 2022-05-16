@@ -28,5 +28,21 @@ namespace RapidCart.Web.Controllers
             }
             return BadRequest(items.Message);
         }
+        
+        [HttpGet]
+        [Route("/api/[controller]/OrderReport/{id}", Name="OrderReport")]
+        public IActionResult OrderReport(int id)
+        {
+            var items = _reportRepository.GetOrderReport(id);
+            if (items.Success)
+            {
+                if (items.Data.Count == 0)
+                {
+                    return NotFound(items.Message);
+                }
+                return Ok(items.Data);
+            }
+            return BadRequest(items.Message);
+        }
     }
 }
