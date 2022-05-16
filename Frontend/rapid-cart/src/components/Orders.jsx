@@ -1,8 +1,7 @@
 ﻿import { useEffect, useState } from "react";
 import Order from "./Order";
 
-const url = "http://localhost:5000/api/order/user/1";
-const reportUrl = "http://localhost:5000/api/report/OrderReport/1";
+const reportUrl = "http://localhost:5000/api/report/OrderReport/";
 
 
 
@@ -12,6 +11,7 @@ function Orders(props) {
     const [orders, setOrders] = useState([]);
     const [orderReport, setOrderReport] = useState([]);
     const [itemReportState, setItemReportState] = useState([]);
+    const [user, setUser] = useState(props.user);
 
     useEffect(() => {
         init();
@@ -19,13 +19,14 @@ function Orders(props) {
     }, [setOrders]);
 
     const GetOrders = () => {
+        const url = reportUrl + 69;
         const get = {
             method: 'GET',
             headers: {
                 "Accept": "application/json",
             }
         };
-        fetch(reportUrl, get)
+        fetch(url, get)
             .then(res => res.json())
             .then(data => {
                 setOrderReport(data);
@@ -33,8 +34,6 @@ function Orders(props) {
             })
             .catch(err => console.log(err));
     }
-
-
     
     function newDate(date) {
         const year = date.substring(0, 4);
@@ -91,7 +90,7 @@ function Orders(props) {
     }
     return (
         <div className="orders">
-            <body className="text-gray-900 bg-gray-100 font-body" id="body" data-new-gr-c-s-check-loaded="14.1060.0" data-gr-ext-installed="">
+            <div className="text-gray-900 bg-gray-100 font-body" id="body" data-new-gr-c-s-check-loaded="14.1060.0" data-gr-ext-installed="">
 
                 <div className="pt-16 px-10 grid lg:grid-cols-5 pb-20">
 
@@ -151,18 +150,18 @@ function Orders(props) {
                             </ul>
                         </nav>
                     </div>
-                    
 
-                    
+
+
                     <main className="lg:col-span-4">
-                        
+
                         <div className="mt-16">
                             <div><span className="font-bold text-2xl md:text-4xl">Your past orders:</span></div>
 
                             <div className="mt-5 grid grid-cols-2 lg:grid-cols-1 gap-10">
 
                                 {orderReport.map ( o => (
-                                
+
                                 <div className="bg-white rounded-lg shadow-md lg:border-l-8 border-gray-800 text-center hover:shadow-lg order">
                                     <div className="grid grid-cols-1 lg:grid-cols-4">
                                         <div className="bg-green-500 p-3">
@@ -243,7 +242,7 @@ function Orders(props) {
                     </aside>
                 </div>
 
-            </body>
+            </div>
         </div>
     )
 }

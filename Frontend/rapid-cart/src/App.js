@@ -108,7 +108,7 @@ function App() {
                 "Password" : json.Password,
                 "Email" : json.Email,
             }
-            handleLogin(user);
+            const login = () => handleLogin;
         })
     }
     const AddToCart = (item) => {
@@ -145,8 +145,8 @@ function App() {
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
                 <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
-                <Route path="/cart" element={<Cart items={cartItems} removeFromCart={RemoveFromCart}/>} />
-                <Route path="/orders" element={<Orders />} />
+                <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart}/>} />
+                <Route path="/orders" element={<Orders user={user} />} />
             </Routes>
         </div>
   );
