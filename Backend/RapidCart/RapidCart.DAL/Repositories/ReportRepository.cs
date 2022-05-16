@@ -96,6 +96,33 @@ namespace RapidCart.DAL.Repositories
             response.Data = orders;
             return response;
         }
-            
+
+        public Response<List<Item>> SortByCategory(int categoryId)
+        {
+            Response<List<Item>> response = new Response<List<Item>>();
+            List<Item> items = new List<Item>();
+            using (var db = _dbFactory.GetDbContext())
+            {
+                try
+                {
+                    items = db.Item.Where(x => x.CategoryId == categoryId).ToList();
+                    if (items.Count == 0)
+                    {
+                        response.Success = true;
+                        response.Message = "No items found";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Success = false;
+                    response.Message = ex.Message;
+                    return response;
+                }
+            }
+
+            response.Data = items;
+            response.Success = true;
+            return response;
+        }
     }
 }
