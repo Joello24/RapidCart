@@ -86,7 +86,7 @@ function Shop (props) {
             </div>
 
             {/*TODO: DEACTIVATE ADD TO CART AFTER ITEM IS ALREADY ADDED TO CART*/}
-            <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
                 {items.map(item => (
                     <Item key={item.itemId} name={item.name} discount={.15} price={item.price} inventory={item.inventory} item={item} add={() => addToCart(item)} />
                 ))}
