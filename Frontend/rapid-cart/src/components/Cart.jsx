@@ -74,7 +74,7 @@ function Cart(props) {
         const date = year + "-" + month + "-" + day;
 
         const addBody = JSON.stringify({
-            "UserId" : "1",
+            "UserId" : props.user.userId,
             "TotalCost" : cartTotal,
             "DateCreated" : date
         });

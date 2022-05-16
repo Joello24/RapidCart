@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using RapidCart.Core;
 
 namespace RapidCart.DAL.Repositories
@@ -9,10 +11,12 @@ namespace RapidCart.DAL.Repositories
     public class ReportRepository : IReportRepository
     {
         private readonly string _connectionString;
+        private readonly DBFactory _dbFactory;
 
         public ReportRepository(DBFactory dbFactory)
         {
             _connectionString = dbFactory.GetConnectionString();
+            _dbFactory = dbFactory;
         }
 
 
@@ -64,5 +68,34 @@ namespace RapidCart.DAL.Repositories
             response.Data = items;
             return response;
         }
+
+        public Response<List<Order>> GetOrderReport(int userId)
+        {
+            var response = new Response<List<Order>>();
+            List<Order> orders = new List<Order>();
+            using (var db = _dbFactory.GetDbContext())
+            {
+                try
+                {
+                    orders = db.Order.Where(x => x.UserId == userId).Include(x => x.OrderItems).ToList();
+                    if (orders.Count == 0)
+                    {
+                        response.Success = true;
+                        response.Message = "No orders found";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Success = false;
+                    response.Message = ex.Message;
+                    return response;
+                }
+                
+            }
+            response.Success = true;
+            response.Data = orders;
+            return response;
+        }
+            
     }
 }

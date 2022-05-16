@@ -1,6 +1,6 @@
 ﻿import Item from './Item';
 import {useEffect, useState} from "react";
-const url = 'http://localhost:5000/api/item';
+const url = 'http://localhost:5051/api/item';
 
 const searchurl = "http://localhost:5000/api/report/search/a";
 
