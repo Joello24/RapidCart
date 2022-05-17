@@ -1,5 +1,4 @@
 body{
-    background-color: #E9EFC0;
     font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     text-size-adjust: none;
 }
@@ -10,9 +9,7 @@ body{
     font-weight: bold;
     width: 256px;
 }
-.Cart{
-    background-color: #E9EFC0;
-}
+
 
 .top{
     color: aqua;

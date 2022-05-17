@@ -58,7 +58,7 @@ CREATE TABLE Item (
                       [Description] nvarchar(150),
                       Price decimal,
                       Inventory int,
-                      [Path] NVARCHAR(100)
+                      [Path] NVARCHAR(MAX)
 )
 GO
 
