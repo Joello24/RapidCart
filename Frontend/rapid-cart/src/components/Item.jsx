@@ -39,15 +39,22 @@ function Item(props) {
                             className="line-through text-sm text-red-500">${props.price}</span></h4>
                     </div>
                     <div className="flex">
-                        <button onClick={addToCart} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
-                            cart
+                        <button onClick={isInCart == true ? console.log("Already in cart") : addToCart} className="py-3 w-9/12 bg-green-300 rounded-bl-xl text-white font-extrabold">
+                            {isInCart == true ? "Added" : "Add to cart"}
                         </button>
                         <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={decrementCount} >
                             -
                         </button>
+
                         <span className="text-m m-auto">{count}</span>
-                        <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
+                        <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} > </button>
+
+                        <span className="text-sm text-center my-3 font-bold">{count}</span>
+                        <button className="bg-green-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
+
                             +
+                        </button>
+                        <button className=" w-1/12 bg-green-300 rounded-br-xl text-white font-extrabold">
                         </button>
                     </div>
             </div>

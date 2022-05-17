@@ -19,6 +19,7 @@ function Orders(props) {
     }, [setOrders]);
 
     const GetOrders = () => {
+
         const url = reportUrl + 1;
         const get = {
             method: 'GET',
@@ -154,7 +155,6 @@ function Orders(props) {
 
 
                     <main className="lg:col-span-4">
-
                         <div className="mt-16">
                             <div><span className="font-bold text-2xl md:text-4xl">Your past orders:</span></div>
 
