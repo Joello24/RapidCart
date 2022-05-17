@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 const url = 'http://localhost:5051/api/item';
 
-const searchurl = "http://localhost:5000/api/report/search/a";
+const searchurl = "http://localhost:5051/api/report/search/";
 
 const sortByCategoryurl = "http://localhost:5000/api/report/GetByCategory/";
 
@@ -48,17 +48,22 @@ function Shop (props) {
             .catch(err => console.log(err));
     }
 
-    const HandleItemSearch = () => {
-        const init = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json",
-            },
-        };
+    const init = {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+        },
+    };
+    
+    const HandleItemSearch = (val) => {
+      
+        setSearch(val);
 
         function HandleSearchResults()
         {
-            return fetch(searchurl + search, init)
+            
+            
+            return fetch(searchurl + val, init)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -76,6 +81,7 @@ function Shop (props) {
             console.log(data);
         });
     };
+
 
     const HandleSortByCategory = () => {
         const init = {
@@ -105,16 +111,18 @@ function Shop (props) {
         });
     }
 
+
     const HandleChange = (evt) => {
+        const searchInput = document.getElementById("searchInput");
         console.log(evt.target.value);
-        setSearch(evt.target.value);
-        HandleItemSearch();
+        HandleItemSearch(searchInput.value);
     }
 
     return (
         <div className="h-screen w-screen bg-gray-50 p-5">
             <div className="my-2">
-                <input placeholder=" Search..." className="w-1/3 rounded py-2 border-b-2 border-gray-600 outline-none focus:border-green-400" type="text" onChange={HandleChange}/>
+                <input id="searchInput" placeholder="Search..." className="w-1/3 rounded py-2 border-b-2 border-gray-600 outline-none focus:border-green-400" type="text" />
+                <button className="bg-green-500 px-2 mx-2 box-border text-white font-bold" onClick={HandleChange}>search</button>
                 <label className="text-red-600 font-bold" htmlFor="search">{searchResultBool ? " No results found":""}</label>
 
                 <button id="dropdownDefault" data-dropdown-toggle="dropdown"
