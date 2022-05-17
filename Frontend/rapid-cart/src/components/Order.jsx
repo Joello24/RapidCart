@@ -1,4 +1,5 @@
 ﻿import {useEffect, useState} from "react";
+import OrderItem from "./OrderItem";
 
 
 
@@ -45,29 +46,7 @@ function Order(props) {
                     <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                 </div>
                 {props.order.orderItems.map(item => (
-                    <div className="flex items-center bg-amber-100 mx-1 hover:bg-gray-100 -mx-8 px-6 py-5">
-                        <div className="flex w-2/5">
-                            <div className="w-20 mx-2">
-                                <img className="h-24" src="https://i2.wp.com/ceklog.kindel.com/wp-content/uploads/2013/02/firefox_2018-07-10_07-50-11.png"
-                                     alt="">
-                                </img>
-                            </div>
-                            <div className="flex flex-col justify-between ml-4 pr-5 flex-grow">
-                                <span className="font-bold text-sm">{item.name}Apple</span>
-                                <span className="text-red-500 text-xs">{item.categoryId}Produce</span>
-                            </div>
-                        </div>
-                        <div className="flex justify-center w-1/5">
-                            <div className="">
-                                <span className="font-bold text-md"></span>
-                            </div>
-                            <div className="">
-                                <span className="font-bold text-md">{item.quantity}</span>
-                            </div>
-                        </div>
-                        <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice}</span>
-                        <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice * item.quantity}</span>
-                    </div>
+                    <OrderItem key={item.itemId} item={item} />
                 ))}
             </div>
         </div>

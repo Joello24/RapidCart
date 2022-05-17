@@ -149,7 +149,6 @@ function App() {
                 <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
                 <Route path="/orderList" element={<OrderList user={user} />} />
-
             </Routes>
         </div>
   );

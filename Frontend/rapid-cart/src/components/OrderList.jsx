@@ -14,7 +14,7 @@ function OrderList(props){
     }, [setOrders]);
 
     const GetOrders = () => {
-        const url = reportUrl + 69;
+        const url = reportUrl + 1;
         const get = {
             method: 'GET',
             headers: {
@@ -58,12 +58,10 @@ function OrderList(props){
                                 <div className="bg-white rounded-lg shadow-md lg:border-l-8 border-gray-800 text-center hover:shadow-lg order">
                                     <div>
                                         {orderReport.map (o => (
-                                            <div>
-                                                <Order order={o} />
+                                            <div key={o.orderId}>
+                                                <Order key={o.orderId} order={o} />
                                             </div>
-
                                         ))}
-
                                     </div>
                                 </div>
 
