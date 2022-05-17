@@ -1,5 +1,6 @@
 ﻿import AddedToCart from '../images/addedToCart.png';
 import {useState} from "react";
+import image from '../images/TestImages/americanCheese.jpeg';
 
 function Item(props) {
 
@@ -30,7 +31,7 @@ function Item(props) {
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
-                     src="https://i2.wp.com/ceklog.kindel.com/wp-content/uploads/2013/02/firefox_2018-07-10_07-50-11.png"
+                     src= {image}
                      alt="" />
                     <div className="p-5">
                         <h2 className="text-lg">Stock: {props.inventory}</h2>

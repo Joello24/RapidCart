@@ -9,12 +9,10 @@ function OrderList(props){
     const [itemReportState, setItemReportState] = useState([]);
     const [user, setUser] = useState(props.user);
 
-    useEffect(() => {
-        GetOrders();
-    }, [setOrders]);
+
 
     const GetOrders = () => {
-        const url = reportUrl + 1;
+        const url = reportUrl + props.user.userId;
         const get = {
             method: 'GET',
             headers: {
@@ -50,6 +48,9 @@ function OrderList(props){
             <div className="text-center">
                 Orders:
             </div>
+            <button onClick={GetOrders}>
+                Get Orders
+            </button>
             <div className="text-gray-900 bg-gray-100 font-body">
                 <div className="lg:col-span-4">
                     <div className="mt-16">
