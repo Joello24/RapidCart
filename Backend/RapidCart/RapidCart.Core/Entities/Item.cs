@@ -14,6 +14,7 @@ namespace RapidCart.Core
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Inventory { get; set; }
+        public string Path { get; set; }
         
         public List<OrderItem> OrderItem { get; set; }
     }
