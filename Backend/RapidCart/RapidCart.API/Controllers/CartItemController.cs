@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RapidCart.Core.Entities;
-using RapidCart.Core.Interfaces;
+using RapidCart.Core;
+using RapidCart.Core;
 using RapidCart.Web.ViewModels;
 using System;
 using System.Collections.Generic;
