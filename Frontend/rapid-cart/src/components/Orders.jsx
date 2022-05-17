@@ -8,19 +8,17 @@ const reportUrl = "http://localhost:5051/api/report/OrderReport/";
 function Orders(props) {
 
     // fetch orders from DB
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState();
     const [orderReport, setOrderReport] = useState([]);
     const [itemReportState, setItemReportState] = useState([]);
     const [user, setUser] = useState(props.user);
 
     useEffect(() => {
         init();
-        GetOrders();
     }, [setOrders]);
 
     const GetOrders = () => {
-
-        const url = reportUrl + 1;
+        const url = reportUrl + user.userId;
         const get = {
             method: 'GET',
             headers: {
@@ -32,10 +30,12 @@ function Orders(props) {
             .then(data => {
                 setOrderReport(data);
                 console.log(data);
+                return data;
             })
             .catch(err => console.log(err));
+
     }
-    
+
     function newDate(date) {
         const year = date.substring(0, 4);
         const month = date.substring(5, 7);
@@ -89,6 +89,7 @@ function Orders(props) {
             orderPanel.classList.add('translate-x-full');
         })
     }
+
     return (
         <div className="orders">
             <div className="text-gray-900 bg-gray-100 font-body" id="body" data-new-gr-c-s-check-loaded="14.1060.0" data-gr-ext-installed="">
