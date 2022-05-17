@@ -18,7 +18,7 @@ using RapidCart.Core.Enums;
 using RapidCart.DAL;
 using RapidCart.DAL.Repositories;
 using RapidCart.Core;
-using RapidCart.Core.Interfaces;
+using RapidCart.Core;
 
 namespace RapidCart.Web
 {
@@ -69,14 +69,9 @@ namespace RapidCart.Web
             services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
             services.AddTransient<IItemRepository>(r => new ItemRepository(fac));
             services.AddTransient<IReportRepository>(r => new ReportRepository(fac));
-
             services.AddTransient<ICartRepository>(r => new CartRepository(fac));
-
-            services.AddTransient<ICartItemRepository>(r => new CartItemRepository(fac));
-
-
+            services.AddTransient<ICartItemRepository>(r => new CartItemRepository(fac, new CartRepository(fac)));
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

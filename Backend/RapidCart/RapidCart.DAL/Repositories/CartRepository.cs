@@ -1,6 +1,6 @@
 ﻿using RapidCart.Core;
 using RapidCart.Core.Entities;
-using RapidCart.Core.Interfaces;
+using RapidCart.Core;
 using System;
 using System;
 using System.Collections.Generic;

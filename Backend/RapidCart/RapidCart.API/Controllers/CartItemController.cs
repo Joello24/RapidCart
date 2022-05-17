@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace RapidCart.Web.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class CartItemController : Controller
     {
         private readonly ICartItemRepository _cartItemRepository;
@@ -68,8 +70,10 @@ namespace RapidCart.Web.Controllers
                     Quantity = model.Quantity,
                     TotalPrice = model.TotalPrice
                 };
+                
 
-                var result = _cartItemRepository.Insert(cartItem);
+                var result = _cartItemRepository.Insert(cartItem,model.UserId);
+                
 
                 if (result.Success)
                 {

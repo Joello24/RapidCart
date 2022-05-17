@@ -11,6 +11,6 @@ namespace RapidCart.Core.Entities
         public int CartId { get; set; }
         public int UserId { get; set; }
         public DateTime DateCreated { get; set; }
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
     }
 }

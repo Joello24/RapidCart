@@ -1,11 +1,12 @@
-﻿using RapidCart.Core.Entities;
+﻿using RapidCart.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RapidCart.Core.Entities;
 
-namespace RapidCart.Core.Interfaces
+namespace RapidCart.Core
 {
     public interface ICartRepository
     {

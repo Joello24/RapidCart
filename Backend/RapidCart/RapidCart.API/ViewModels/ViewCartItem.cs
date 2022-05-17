@@ -12,6 +12,7 @@ namespace RapidCart.Web.ViewModels
         public int CartId { get; set; }
         [Required]
         public int ItemId { get; set; }
+        public int UserId { get; set; }
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer")]
         public int Quantity { get; set; }

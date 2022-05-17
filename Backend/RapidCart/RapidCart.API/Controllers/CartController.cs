@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using RapidCart.Core;
 using RapidCart.Web.ViewModels;
-using RapidCart.Core.Interfaces;
+using RapidCart.Core;
 using RapidCart.Core.Entities;
 
 namespace RapidCart.Web.Controllers
@@ -44,7 +44,7 @@ namespace RapidCart.Web.Controllers
                     CartId = model.CartId,
                     UserId = model.UserId,
                     DateCreated = model.DateCreated,
-                    OrderId = model.OrderId
+                    OrderId = null
                 };
                 
                 var result = _cartRepository.Insert(cart);

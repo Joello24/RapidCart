@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RapidCart.Core.Entities;
 
 namespace RapidCart.DAL.Repositories
 {
@@ -13,10 +14,12 @@ namespace RapidCart.DAL.Repositories
     {
 
         public DBFactory DbFac { get; set; }
+        public CartRepository CartRepo { get; set; }
 
-        public CartItemRepository(DBFactory DbFac)
+        public CartItemRepository(DBFactory DbFac, CartRepository CartRepo)
         {
             this.DbFac = DbFac;
+            this.CartRepo = CartRepo;
         }
 
         public Response Delete(int cartId, int itemId)
@@ -67,13 +70,35 @@ namespace RapidCart.DAL.Repositories
             return response;
         }
 
-        public Response<CartItem> Insert(CartItem cartItem)
+        public Response<CartItem> Insert(CartItem cartItem, int userId)
         {
             var response = new Response<CartItem>() { Success = true };
             try
             {
                 using (var db = DbFac.GetDbContext())
                 {
+                    var cart = db.Cart.Find(cartItem.CartId);
+                    if (cart == null)
+                    {
+                        Cart cartToInsert = new Cart()
+                        {
+                            UserId = userId,
+                            DateCreated = new DateTime()
+                        };
+                        var ret = CartRepo.Insert(cartToInsert);
+                        if (ret.Success)
+                        {
+                            cartItem.CartId = ret.Data.CartId;
+                            db.CartItem.Add(cartItem);
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            response.Message = ret.Message;
+                            response.Success = false;
+                        }
+                    }
+                    
                     response.Data = db.CartItem.Add(cartItem).Entity;
                     db.SaveChanges();
                 }

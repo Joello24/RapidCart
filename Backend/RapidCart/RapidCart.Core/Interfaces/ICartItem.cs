@@ -9,7 +9,7 @@ namespace RapidCart.Core
 {
     public interface ICartItemRepository
     {
-        Response<CartItem> Insert(CartItem cartItem);
+        Response<CartItem> Insert(CartItem cartItem, int userId);
         Response Update(CartItem cartItem);
         Response Delete(int cartId, int itemId);
         Response<CartItem> Get(int cartId, int itemId);
