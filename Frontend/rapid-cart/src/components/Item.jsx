@@ -45,7 +45,7 @@ function Item(props) {
                         <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={decrementCount} >
                             -
                         </button>
-                        <span className="text-sm">{count}</span>
+                        <span className="text-m m-auto">{count}</span>
                         <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
                             +
                         </button>
