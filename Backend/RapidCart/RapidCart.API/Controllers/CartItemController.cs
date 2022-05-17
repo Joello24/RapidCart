@@ -46,6 +46,10 @@ namespace RapidCart.Web.Controllers
             }
             if (result.Success)
             {
+                if(result.Data.Count == 0)
+                {
+                    return BadRequest($"No Items where found for CartId:{id}");
+                }
                 return Ok(result.Data);
             }
             return BadRequest(result.Message);
