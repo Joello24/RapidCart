@@ -31,7 +31,7 @@ function Item(props) {
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
-                     src= {image}
+                     src= {props.path}
                      alt="" />
                     <div className="p-5">
                         <h2 className="text-lg">Stock: {props.inventory}</h2>
