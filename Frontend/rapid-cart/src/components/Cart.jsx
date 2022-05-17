@@ -1,7 +1,7 @@
 ﻿import {useEffect, useState} from "react";
 
-const orderItemURL = "http://localhost:5000/api/orderitem";
-const orderURL = "http://localhost:5000/api/order";
+const orderItemURL = "http://localhost:5051/api/orderitem";
+const orderURL = "http://localhost:5051/api/order";
 
 // ORDER ITEM BODY EXAMPLE
 // {

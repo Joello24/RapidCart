@@ -63,3 +63,8 @@ namespace RapidCart.Web.Controllers
         
     }
 }
+// Id, UserId, OrderId?
+
+// Id, CartId, ItemId, Qty, Price
+
+// 
