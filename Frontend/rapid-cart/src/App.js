@@ -24,6 +24,7 @@ function App() {
     const [user, setUser] = useState();
     const [loggedIn, setLoggedIn] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [cartId, setCartId] = useState();
 
     useEffect(() => {
         const sessionToken = sessionStorage.getItem("sessionToken");
@@ -34,10 +35,6 @@ function App() {
         const sessionUser = sessionStorage.getItem("sessionUser");
         if(sessionUser){ 
             setUser(JSON.parse(sessionUser));
-        }
-        const sessionCart = sessionStorage.getItem("sessionCart");
-        if(sessionCart){
-            setCartItems(JSON.parse(sessionCart));
         }
       }, []); 
 
@@ -55,7 +52,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5051/api/auth/login", req)
+        fetch("http://localhost:5000/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -90,7 +87,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5051/api/user", req)
+            return fetch("http://localhost:5000/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -112,13 +109,94 @@ function App() {
         })
     }
     const AddToCart = (item) => {
-        setCartItems([...cartItems, item]);
-        sessionStorage.setItem("sessionCart", JSON.stringify(cartItems));
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
+
+        const cartItemBody = JSON.stringify({
+            "OrderId" : cartId,
+            "ItemId" : item.itemId,
+            "Quantity" : item.count,
+            "ItemPrice" : item.price,
+            "TotalPrice" : item.price * item.count
+        });
+        const cartItem = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: cartItemBody
+        };
+        function postCartItem() {
+            return fetch(cartItemUrl,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        // {
+        //     "data": {
+        //     "orderId": 7,
+        //     "userId": 1,
+        //         "totalCost": 500,
+        //         "dateCreated": "2022-01-01T00:00:00",
+        //         "orderItems": null
+        // },
+        //     "success": true,
+        //     "message": null
+        // }
+        postCartItem().then(data => {
+            console.log("Response" + data);
+        });
     }
     const RemoveFromCart = (item) => {
-        const newCart = cartItems.filter(cartItem => cartItem.itemId !== item.itemId);
-        setCartItems(newCart);
-        sessionStorage.setItem("sessionCart", JSON.stringify(newCart));
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
+
+        const cartItem = {
+            method: "DELETE",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+        };
+        function deleteCartItem() {
+            return fetch(cartItemUrl + "/"+ item.itemId + "/" + cartId,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        deleteCartItem().then(data => {
+            console.log("Response" + data);
+        });
+    }
+    const ClearCart = () => {
+        const cartUrl= "http://localhost:5000/api/cart";
+        const cart = {
+            method: "DELETE",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+        };
+        function deleteCart() {
+            return fetch(cartUrl + "/"+ cartId,cart)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        deleteCart().then(data => {
+            console.log("Response" + data);
+        });
     }
 
     const navigate = useNavigate();
@@ -133,19 +211,15 @@ function App() {
         navigate("/");
     }
 
-    // if(!token) {
-    //     return <Login login={handleLogin} />
-    // }
-
   return (
         <div>
             <Header loggedIn={loggedIn} handleLogout={handleLogout}/>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/shop" element={<Shop setCartItems={AddToCart} />} />
+                <Route path="/shop" element={<Shop setCartItems={AddToCart} currentCart={cartItems}/>} />
                 <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
-                <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart}/>} />
+                <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
                 <Route path="/orderList" element={<OrderList user={user} />} />
             </Routes>

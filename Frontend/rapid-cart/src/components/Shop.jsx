@@ -12,7 +12,7 @@ function Shop (props) {
 
     const [items, setItems] = useState([]);
 
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(props.currentCart);
 
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -41,18 +41,17 @@ function Shop (props) {
             .then(res => res.json())
             .then(data => {
                 setItems(data);
-                console.log(data);
             })
             .catch(err => console.log(err));
     }
-
     const init = {
         method: "GET",
         headers: {
             "Accept": "application/json",
         },
     };
-    
+
+
     const HandleItemSearch = (val) => {
       
         setSearch(val);
