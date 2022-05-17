@@ -52,8 +52,8 @@ namespace RapidCart.Web
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "http://localhost:2000",
-                        ValidAudience = "http://localhost:2000",
+                        ValidIssuer = "http://localhost:3000",
+                        ValidAudience = "http://localhost:3000",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"))
                     };
                     services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);

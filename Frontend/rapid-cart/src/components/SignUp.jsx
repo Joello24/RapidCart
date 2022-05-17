@@ -14,7 +14,7 @@ function SignUp(props) {
 
     const HandleSubmit = function(event){
         event.preventDefault();
-        props.signUp(newUser);
+        props.signUp(newUser, props.goBack);
     }
 
     return (

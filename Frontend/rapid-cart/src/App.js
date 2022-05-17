@@ -41,7 +41,7 @@ function App() {
         }
       }, []); 
 
-    const handleLogin = async (login, goBack) => {
+    const handleLogin = (login, goBack) => {
         const loginInput = JSON.stringify({
             "UserName": login.UserName,
             "Password": login.Password
@@ -55,7 +55,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5000/api/auth/login", req)
+        fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -72,7 +72,7 @@ function App() {
                 goBack();
             })  
     }
-    const handleSignUp = (signUp) => {
+    const handleSignUp = (signUp, goBack) => {
         const signUpInput = JSON.stringify({
             "FirstName" : signUp.firstName,
             "LastName" : signUp.lastName,
@@ -90,26 +90,25 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5000/api/user", req)
+            return fetch("http://localhost:5051/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
                         return Promise.reject("response is not 200 OK");
                     }
-
                     return response.json();
                 })
         }
-        add().then(json => {
-            // PROBABLY LOG THE USER IN HERE
-            console.log("Saved")
-            console.log(json);
-            const user = {
-                "UserName" : json.UserName,
-                "Password" : json.Password,
-                "Email" : json.Email,
+        add().then((json) => {
+            console.log("JSON: " + json.password);
+            console.log("JSON: " + json.email);
+            const login = {
+                UserName : signUp.email,
+                Password : signUp.password,
             }
-            const login = () => handleLogin;
+            console.log("Login: " + login.Password);
+            console.log("Login: " + login.UserName);
+            handleLogin(login, () => navigate(-2));
         })
     }
     const AddToCart = (item) => {
