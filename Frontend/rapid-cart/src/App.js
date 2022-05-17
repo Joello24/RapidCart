@@ -15,6 +15,7 @@ import SignUp from "./components/SignUp";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import Orders from "./components/Orders";
+import OrderList from "./components/OrderList";
 
 
 function App() {
@@ -147,6 +148,8 @@ function App() {
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
                 <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
+                <Route path="/orderList" element={<OrderList user={user} />} />
+
             </Routes>
         </div>
   );
