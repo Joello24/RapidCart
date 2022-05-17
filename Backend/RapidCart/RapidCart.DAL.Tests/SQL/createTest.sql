@@ -46,6 +46,14 @@ CREATE TABLE [Order] (
 )
 GO
 
+CREATE TABLE [Cart](
+                        CartId int primary key identity(1,1),
+                        UserId int not null foreign key references [User](UserId),
+                        DateCreated datetime2 null,
+                        OrderId int null foreign key references [Order](OrderId)
+)
+
+
 CREATE TABLE Category(
                          CategoryId int primary key identity (1,1),
                          [Name] nvarchar(50),
@@ -59,6 +67,16 @@ CREATE TABLE Item (
                       Price decimal,
                       Inventory int,
                       [Path] NVARCHAR(MAX)
+)
+
+GO 
+
+CREATE TABLE [CartItem](
+                           CartId int not null foreign key references [Cart](CartId),
+                           ItemId int not null foreign key references Item(ItemId),
+                           Quantity int not null,
+                           ItemPrice decimal not null,
+                           TotalPrice decimal not null
 )
 GO
 
