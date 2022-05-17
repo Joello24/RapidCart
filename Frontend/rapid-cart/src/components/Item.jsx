@@ -10,6 +10,7 @@ function Item(props) {
     const addToCart = () => {
         props.item.count = count;
         setIsInCart(true);
+        props.item.isInCart = true;
         props.add();
     }
     const incrementCount = () => {
@@ -27,7 +28,7 @@ function Item(props) {
                     props.discount < .10 ? props.discount.toString().slice(3, 4) : props.discount.toString().slice(2, 4)
                 }%
 			</span>
-            <span hidden={!isInCart} className= "absolute top-0 right-0 text-sm bg-green-300 p-2 rounded-bl-xl">
+            <span hidden={!props.item.isInCart} className= "absolute top-0 right-0 text-sm bg-green-300 p-2 rounded-bl-xl">
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"

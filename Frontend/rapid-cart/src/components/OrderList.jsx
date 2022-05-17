@@ -10,9 +10,12 @@ function OrderList(props){
     const [user, setUser] = useState(props.user);
 
 
+    useEffect(() => {
+        GetOrders();
+    }, []);
 
     const GetOrders = () => {
-        const url = reportUrl + props.user.userId;
+        const url = reportUrl + user.userId;
         const get = {
             method: 'GET',
             headers: {

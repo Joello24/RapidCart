@@ -53,8 +53,8 @@ namespace RapidCart.Web
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "http://localhost:2000",
-                        ValidAudience = "http://localhost:2000",
+                        ValidIssuer = "http://localhost:3000",
+                        ValidAudience = "http://localhost:3000",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"))
                     };
                     services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
@@ -68,7 +68,11 @@ namespace RapidCart.Web
             services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
             services.AddTransient<IItemRepository>(r => new ItemRepository(fac));
             services.AddTransient<IReportRepository>(r => new ReportRepository(fac));
+<<<<<<< HEAD
             services.AddTransient<ICartRepository>(r => new CartRepository(fac));
+=======
+            services.AddTransient<ICartItemRepository>(r => new CartItemRepository(fac));
+>>>>>>> bf66c05152286e61b46cc16fc8d4f04a8109a15b
 
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
 

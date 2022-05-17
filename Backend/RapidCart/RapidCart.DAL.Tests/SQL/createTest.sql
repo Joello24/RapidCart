@@ -20,7 +20,7 @@ CREATE TABLE [User] (
                         UserId int primary key identity(1,1),
                         FirstName nvarchar(50) not null,
                         LastName nvarchar(50) not null,
-                        Email nvarchar(50) not null,
+                        Email nvarchar(50) not null UNIQUE,
                         [Password] nvarchar(250) not null,
                         Phone nvarchar(20) not null,
                         PermissionId int not null foreign key references [Permissions](PermissionId)

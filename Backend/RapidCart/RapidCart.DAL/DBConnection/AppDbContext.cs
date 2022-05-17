@@ -13,7 +13,11 @@ namespace RapidCart.DAL.DBConnection
         public DbSet<OrderItem> OrderItem { get; set; }
         public DbSet<Permissions> Permissions { get; set; }
         public DbSet<User> User { get; set; }
+<<<<<<< HEAD
         public DbSet<Cart> Cart { get; set; }
+=======
+        public DbSet<CartItem> CartItem { get; set; }
+>>>>>>> bf66c05152286e61b46cc16fc8d4f04a8109a15b
 
         public AppDbContext() : base()
         {
@@ -27,7 +31,9 @@ namespace RapidCart.DAL.DBConnection
         {
             modelBuilder.Entity<OrderItem>()
                 .HasKey(OI => new { OI.OrderId, OI.ItemId });
-            
+            modelBuilder.Entity<CartItem>()
+                .HasKey(CI => new { CI.CartId, CI.ItemId });
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
