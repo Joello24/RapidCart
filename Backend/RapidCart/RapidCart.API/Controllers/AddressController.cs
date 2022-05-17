@@ -110,5 +110,24 @@ namespace RapidCart.Web.Controllers
                 return BadRequest(ModelState);
             }
         }
+        [HttpDelete("{cartId}"), Authorize]
+        public IActionResult DeleteCart(int cartId)
+        {
+            var cart = _addressRepository.Get(cartId);
+            if (!cart.Success)
+            {
+                return NotFound(cart.Message);
+            }
+
+            var result = _addressRepository.Delete(cartId);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
     }
 }

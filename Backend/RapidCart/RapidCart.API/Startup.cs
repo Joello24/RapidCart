@@ -18,6 +18,7 @@ using RapidCart.Core.Enums;
 using RapidCart.DAL;
 using RapidCart.DAL.Repositories;
 using RapidCart.Core;
+using RapidCart.Core.Interfaces;
 
 namespace RapidCart.Web
 {
@@ -68,7 +69,11 @@ namespace RapidCart.Web
             services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
             services.AddTransient<IItemRepository>(r => new ItemRepository(fac));
             services.AddTransient<IReportRepository>(r => new ReportRepository(fac));
+
+            services.AddTransient<ICartRepository>(r => new CartRepository(fac));
+
             services.AddTransient<ICartItemRepository>(r => new CartItemRepository(fac));
+
 
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
 
