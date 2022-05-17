@@ -1,7 +1,9 @@
 ﻿import {useEffect, useState} from "react";
+import Modal from "./Popup";
 
 const orderItemURL = "http://localhost:5051/api/orderitem";
 const orderURL = "http://localhost:5051/api/order";
+
 
 // ORDER ITEM BODY EXAMPLE
 // {
@@ -21,6 +23,8 @@ function Cart(props) {
 
     const [cartItems, setCartItems] = useState([props.items]);
     const [cartTotal, setCartTotal] = useState();
+    const [showModal, setShowModal] = useState(false);
+    const [orderSummary, setOrderSummary] = useState();
 
     useEffect(() => {
         setCartItems(props.items);
@@ -99,6 +103,7 @@ function Cart(props) {
         postOrder().then(data => {
             console.log(data);
             AddOrderItems(data.data.orderId);
+
         });
         function AddOrderItems(orderId) {
             cartItems.forEach(item => {
@@ -127,8 +132,32 @@ function Cart(props) {
                             return response.json();
                         })
                 };
+                // {
+                //     "data": {
+                //     "orderId": 7,
+                //     "userId": 1,
+                //         "totalCost": 500,
+                //         "dateCreated": "2022-01-01T00:00:00",
+                //         "orderItems": null
+                // },
+                //     "success": true,
+                //     "message": null
+                // }
                 postOrderItem().then(data => {
-                    console.log(data);
+                    console.log("Response" + data);
+                    setShowModal(true);
+                    const orderItems = [...cartItems];
+                    const order = {
+                        "orderId" : data.orderId,
+                        "totalCost" : data.cartTotal,
+                        "dateCreated" : data.sendDate,
+                        "orderItems" : orderItems
+                    };
+                    console.log("Order"+ order);
+                    setOrderSummary(order);
+                    props.clearCart();
+
+
                 });
             });
         }
@@ -136,10 +165,6 @@ function Cart(props) {
         const orderItemHeaders = {
 
         }
-
-
-
-
 
     }
 
@@ -222,10 +247,8 @@ function Cart(props) {
                 <div className="border-t mt-8">
                     <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total cost</span>
-                        {/*TODO: THIS IS JUST TOTAL COST + SHIPPING */}
                         <span>${cartTotal+10}</span>
                     </div>
-                    {/*TODO: CHECKOUT SHOULD SUBMIT AN ORDER TO DATEBASE*/}
 
                     <button
                         className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full" onClick={SubmitOrder}>Checkout
@@ -233,6 +256,8 @@ function Cart(props) {
                 </div>
             </div>
             </div>
+
+        <Modal showModal={showModal} OrderSummary={orderSummary} total={cartTotal}/>
     </div>
 )
 }
