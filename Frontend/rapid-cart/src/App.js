@@ -62,7 +62,13 @@ function App() {
             },
             body: loginInput,
         };
-        setIsOn(false);
+
+        //setIsOn(false);
+        fetch("http://localhost:5000/api/auth/login", req)
+
+
+        // setIsOn(false);
+
         fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
@@ -104,7 +110,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5051/api/user", req)
+            return fetch("http://localhost:5000/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -122,7 +128,7 @@ function App() {
             }
             console.log("Login: " + login.Password);
             console.log("Login: " + login.UserName);
-            handleLogin(login, () => navigate(-2));
+            handleLogin(login, () => navigate(-2), setIsOn, setMessage);
         })
     }
 
@@ -168,6 +174,7 @@ function App() {
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
+                        setCartItems([]);
                         return Promise.reject("response is not 200 OK");
                     }
                     return response.json();
@@ -240,38 +247,31 @@ function App() {
         });
     }
 
-    const ClearCart = () => {
-        // const cartUrl= "http://localhost:5000/api/cart";
-        // const cart = {
-        //     method: "DELETE",
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json",
-        //     },
-        // };
-        // function deleteCart() {
-        //     return fetch(cartUrl + "/"+ cartId,cart)
-        //         .then(response => {
-        //             if (response.status !== 200 && response.status !== 201) {
-        //                 console.log(`Bad status: ${response.status}`);
-        //                 return Promise.reject("response is not 200 OK");
-        //             }
-        //             return response.json();
-        //         })
-        // };
-        // deleteCart().then(data => {
-        //     console.log("Response" + data);
-        //     getCart();
-        // });
+    const ClearCart = (id) => {
+    const cartUrl= "http://localhost:5000/api/cartitem/ClearCart";
+        const cart = {
+            method: "DELETE",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+        };
+        function deleteCart() {
+            return fetch(cartUrl + "/"+ cartId,cart)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        deleteCart().then(data => {
+            console.log("Response" + data);
+            setCartItems([]);
+        });
     }
 
-    // {
-    //     "CartId": 10,
-    //     "ItemId": 5,
-    //     "ItemPrice": 2.00,
-    //     "Quantity": 5,
-    //     "TotalPrice": 6.00
-    // }
     const incrementCount = (item) => {
         const cartItemUrl= "http://localhost:5051/api/cartitem";
 

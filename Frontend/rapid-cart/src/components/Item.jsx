@@ -31,6 +31,10 @@ function Item(props) {
             <span hidden={!props.item.isInCart} className= "absolute top-0 right-0 text-sm bg-green-300 p-2 rounded-bl-xl">
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
+            <span hidden={props.admin} >
+                <button  onClick={props.Delete} className= "absolute left-20 text-sm bg-green-300 p-2 rounded-bl-xl">Delete</button>
+                <button className= "absolute left-30 text-sm bg-green-300 p-2 rounded-bl-xl">Edit</button>
+            </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
                      src= {props.path}
                      alt="" />
