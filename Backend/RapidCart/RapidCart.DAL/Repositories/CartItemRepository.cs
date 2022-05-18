@@ -4,6 +4,7 @@ using RapidCart.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using RapidCart.Core.Entities;
@@ -23,6 +24,31 @@ namespace RapidCart.DAL.Repositories
             this.DbFac = DbFac;
             this.CartRepo = CartRepo;
         }
+
+        // private void CleanUpCart(int cartId)
+        // {
+        //     using (var db = DbFac.GetDbContext())
+        //     {
+        //         // find duplicates, delete them and use count as CartItem.quantity
+        //         var items = db.CartItem.Where(i => i.CartId == cartId);
+        //         var query = items.GroupBy(x => x.ItemId)
+        //             .Where(g => g.Count() > 1)
+        //             .Select(y => new {Element = y.Key, Count = y.Count()})
+        //             .ToList();
+        //         Console.WriteLine(query);
+        //         foreach (var e in query)
+        //         {
+        //             for (int i = 1; i < e.Count; i++)
+        //             {
+        //                 var item = items.FirstOrDefault(i => i.ItemId == e.Element);
+        //                 db.CartItem.Remove(item);
+        //                 db.SaveChanges();
+        //             }
+        //             db.CartItem.FirstOrDefault(i => i.ItemId == e.Element).Quantity = e.Count;
+        //             db.SaveChanges();
+        //         }
+        //     }
+        // }
 
         public Response Delete(int cartId, int itemId)
         {
@@ -79,7 +105,7 @@ namespace RapidCart.DAL.Repositories
             {
                 using (var db = DbFac.GetDbContext())
                 {
-                    var cart = db.Cart.Find(cartItem.CartId);
+                    var cart = db.Cart.Where(i => i.CartId == cartItem.CartId);
                     if (cart == null)
                     {
                         Cart cartToInsert = new Cart()
@@ -100,9 +126,11 @@ namespace RapidCart.DAL.Repositories
                             response.Success = false;
                         }
                     }
-                    
-                    response.Data = db.CartItem.Add(cartItem).Entity;
-                    db.SaveChanges();
+                    else
+                    {
+                        response.Data = db.CartItem.Add(cartItem).Entity;
+                        db.SaveChanges();
+                    }
                 }
             }
             catch (Exception ex)
@@ -189,6 +217,68 @@ namespace RapidCart.DAL.Repositories
             }
             ret.Success = true;
             return ret;
+        }
+
+        public Response<CartItem> IncrementCount(CartItem cartItem)
+        {
+            var response = new Response<CartItem>();
+            try
+            {
+                using (var db = DbFac.GetDbContext())
+                {
+                    var cartItemDb = db.CartItem.Where(i => i.ItemId == cartItem.ItemId && i.CartId == cartItem.CartId).FirstOrDefault();
+                    cartItemDb.Quantity++;
+                    cartItemDb.TotalPrice = cartItemDb.ItemPrice * cartItemDb.Quantity;
+                    db.SaveChanges();
+                    response.Data = cartItemDb;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            if (response.Data == null)
+            {
+                response.Message = $"Failed to update CartItem:{cartItem.ItemId} CartId:{cartItem.CartId}";
+                response.Success = false;
+            }
+            return response;
+        }
+
+        public Response<CartItem> DecrementCount(CartItem cartItem)
+        {
+            var response = new Response<CartItem>();
+            try
+            {
+                using (var db = DbFac.GetDbContext())
+                {
+                    var cartItemDb = db.CartItem.Where(i => i.ItemId == cartItem.ItemId && i.CartId == cartItem.CartId).FirstOrDefault();
+                    if (cartItemDb.Quantity > 1)
+                    {
+                        cartItemDb.Quantity--;
+                        cartItemDb.TotalPrice = cartItemDb.ItemPrice * cartItemDb.Quantity;
+                        db.SaveChanges();
+                        response.Data = cartItemDb;
+                    }
+                    else
+                    {
+                        response.Message = $"Failed to update CartItem:{cartItem.ItemId} CartId:{cartItem.CartId}";
+                        response.Success = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            if (response.Data == null)
+            {
+                response.Message = $"Failed to update CartItem:{cartItem.ItemId} CartId:{cartItem.CartId}";
+                response.Success = false;
+            }
+            return response;
         }
     }
 }

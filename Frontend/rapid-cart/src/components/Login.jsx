@@ -4,6 +4,7 @@ function Login(props){
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(false);
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -15,6 +16,10 @@ function Login(props){
         };
 
         props.login(login,props.goBack)
+        // check result of login and set error message if needed
+        // if(result != true){
+        //     setErrorMessage(true);
+        // }
     }
     const handleChangeUser = function (evt) {
         setUsername(evt.target.value);
@@ -60,9 +65,10 @@ function Login(props){
 
                             <div className="flex justify-between items-center mb-6">
                                 <a
+                                    hidden={!errorMessage}
                                     href="#!"
                                     className="font-bold text-red-600 hover:text-red-700 focus:text-red-700 active:text-red-800 duration-200 transition ease-in-out"
-                                >Forgot password?</a
+                                >Incorrect Username or Password</a
                                 >
                             </div>
 

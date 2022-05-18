@@ -75,11 +75,16 @@ namespace RapidCart.Web.Controllers
                     Quantity = model.Quantity,
                     TotalPrice = model.TotalPrice
                 };
+                var result = new Response<CartItem>();
+                if (HasDuplicates(cartItem))
+                {
+                    result = _cartItemRepository.IncrementCount(cartItem);
+                }
+                else
+                {
+                    result = _cartItemRepository.Insert(cartItem,model.UserId);
+                }
                 
-
-                var result = _cartItemRepository.Insert(cartItem,model.UserId);
-                
-
                 if (result.Success)
                 {
                     return CreatedAtRoute(nameof(GetCartItem), new { cartId = result.Data.CartId, itemId = result.Data.ItemId }, result.Data);
@@ -96,8 +101,6 @@ namespace RapidCart.Web.Controllers
         }
 
         [HttpPut]
-        [Authorize]
-        [Route("/api/[controller]/{cartId}/{itemId}")]
         public IActionResult EditCartItem(ViewCartItem model)
         {
             if (ModelState.IsValid)
@@ -137,7 +140,6 @@ namespace RapidCart.Web.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
         [Route("/api/[controller]/{cartId}/{itemId}")]
         public IActionResult DeleteCartItem(int cartId, int itemId)
         {
@@ -155,6 +157,20 @@ namespace RapidCart.Web.Controllers
             {
                 return BadRequest(result.Message);
             }
+        }
+
+        private bool HasDuplicates(CartItem cartItem)
+        {
+            var check = _cartItemRepository.Get(cartItem.CartId, cartItem.ItemId);
+            if (check.Success)
+            {
+                return true;
+            }
+            if(check.Data != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
