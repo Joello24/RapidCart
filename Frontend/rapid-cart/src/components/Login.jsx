@@ -13,16 +13,12 @@ function Login(props){
             UserName: username,
             Password: password
         };
-<<<<<<< HEAD
 
-        props.login(login,props.goBack)
         // check result of login and set error message if needed
         // if(result != true){
         //     setErrorMessage(true);
         // }
-=======
         props.login(login, props.goBack, props.setIsOn, props.setMessage)
->>>>>>> 39a86d89890451ba8b80680a67d77c43ef5a277f
     }
     const handleChangeUser = function (evt) {
         setUsername(evt.target.value);

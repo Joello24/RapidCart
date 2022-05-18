@@ -108,13 +108,11 @@ function Shop (props) {
         });
     }
 
-
     const HandleChange = (evt) => {
         const searchInput = document.getElementById("searchInput");
         console.log(evt.target.value);
         HandleItemSearch(searchInput.value);
     }
-
 
     return (
         <div className="">
