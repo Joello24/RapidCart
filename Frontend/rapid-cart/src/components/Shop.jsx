@@ -200,6 +200,42 @@ function Shop (props) {
                 })
                 .catch(err => console.log(err));
         };
+    const EditItem = (newItem) => {
+        const newBody = JSON.stringify({
+            "itemId" : newItem.itemId,
+            "categoryId": 1,
+            "name": newItem.name,
+            "description": newItem.description,
+            "price": newItem.price,
+            "inventory": newItem.inventory,
+            "path": newItem.path,
+            "orderItem": null
+        })
+
+        const init = {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: newBody
+        };
+
+        fetch(url, init)
+            .then(response => {
+                if (response.status !== 200 && response.status !== 201) {
+                    console.log(`Bad status: ${response.status}`);
+                    GetItems();
+                    return Promise.reject("response is not 200 OK");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                GetItems();
+            })
+            .catch(err => console.log(err));
+    };
 
     return (
         <div className="">
@@ -213,7 +249,7 @@ function Shop (props) {
                     
                  </span>
                 <span  hidden={addButtonHidden} className="float-right mr-10 ">
-                    <AddItem  AddItem ={AddNewItem} />
+                    <AddItem mini={false} submit={AddNewItem} />
                 </span>
             <div className="bg-green-100 text-center mb-20 pb-20 ml-2 pt-10">
                 <input id="searchInput" placeholder="Search..." className="w-1/3 rounded py-2 border-b-2 border-gray-600 outline-none focus:border-green-400" type="text" />
@@ -226,7 +262,7 @@ function Shop (props) {
             <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
                
                 {items.map(item => (
-                    <Item key={item.itemId} admin={admin} Delete={() => RemoveItem(item)} name={item.name} discount={.15} price={item.price} inventory={item.inventory} path ={item.path} item={item} add={() => addToCart(item)} />
+                    <Item key={item.itemId} admin={admin} Edit={EditItem} Delete={() => RemoveItem(item)} name={item.name} discount={.15} price={item.price} inventory={item.inventory} path ={item.path} item={item} add={() => addToCart(item)} />
                 ))}
             </div>
         </div>

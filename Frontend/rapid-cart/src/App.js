@@ -186,7 +186,7 @@ function App() {
     }
 
     const AddToCart = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : cartId,
@@ -221,7 +221,7 @@ function App() {
     }
 
     const RemoveFromCart = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItem = {
             method: "DELETE",
