@@ -1,7 +1,8 @@
 body{
-    background-color: #E9EFC0;
+    background-color: #FFFFFF;
     font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     text-size-adjust: none;
+    background-image: linear-gradient(rgba0,0,255,0.5), rgba(255,255,0,0.5);
 }
 .Header{
     background-color: #4E944F;
@@ -11,6 +12,9 @@ body{
     width: 256px;
 }
 .Cart{
-    background-color: #E9EFC0;
+    background-color: #FFFFFF;
 
+}
+.Home{
+    font-size: large;
 }
