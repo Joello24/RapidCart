@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RapidCart.BLL;
 using RapidCart.Core;
 using RapidCart.Core.Enums;
 using RapidCart.DAL;
@@ -52,8 +53,8 @@ namespace RapidCart.Web
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "http://localhost:2000",
-                        ValidAudience = "http://localhost:2000",
+                        ValidIssuer = "http://localhost:3000",
+                        ValidAudience = "http://localhost:3000",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"))
                     };
                     services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
@@ -61,15 +62,16 @@ namespace RapidCart.Web
             
             var fac = new DBFactory(AppMode.Live);
             services.AddControllers();
+            
             services.AddTransient<ICategoryRepository>(r => new CategoryRepository(fac));
             services.AddTransient<IOrderRepository>(r => new OrderRespository(fac));
             services.AddTransient<IUserRepository>(r => new UserRepository(fac));
             services.AddTransient<IOrderItemRepository>(r => new OrderItemRepository(fac));
             services.AddTransient<IItemRepository>(r => new ItemRepository(fac));
             services.AddTransient<IReportRepository>(r => new ReportRepository(fac));
-
+            services.AddTransient<ICartRepository>(r => new CartRepository(fac));
+            services.AddTransient<ICartItemRepository>(r => new CartItemRepository(fac, new CartRepository(fac)));
             //services.AddTransient<IAddressRepository>(r => new AddressRepository(fac));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -14,6 +14,5 @@ namespace RapidCart.Core
         Response Delete(int orderId);
         Response<Order> Get(int orderId);
         Response<List<Order>> GetByUser(int userId);
-
     }
 }

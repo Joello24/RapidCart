@@ -88,13 +88,10 @@ namespace RapidCart.Web.Controllers
                     Email = viewUser.Email,
                     Password = LoginService.GetPasswordHash(viewUser.Password).Data,
                     Phone = viewUser.Phone,
-                    PermissionId = 2,
+                    PermissionId = 2
                 };
-                if(!String.IsNullOrWhiteSpace(txtEmail.Text.Contains("@") && txtEmail.Text.Contains(".")) { 
 
-                    //continue with UserInput
-                
-                } else { MessageBox.Show("Error - email format incorrect"); }
+
 
                 var result = _userRepository.Insert(user);
                 if (result.Success)
@@ -111,9 +108,6 @@ namespace RapidCart.Web.Controllers
                 return BadRequest(ModelState);
             }
         }
-            
-        
-        
         
         [HttpPut, Authorize]
         public IActionResult UpdateUser([FromBody] ViewUser viewUser)

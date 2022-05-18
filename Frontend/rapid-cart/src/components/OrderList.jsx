@@ -1,6 +1,6 @@
 ﻿import {useEffect, useState} from "react";
 import Order from "./Order";
-const reportUrl = "http://localhost:5000/api/report/OrderReport/";
+const reportUrl = "http://localhost:5051/api/report/OrderReport/";
 
 function OrderList(props){
 // fetch orders from DB
@@ -10,9 +10,12 @@ function OrderList(props){
     const [user, setUser] = useState(props.user);
 
 
+    useEffect(() => {
+        GetOrders();
+    }, []);
 
     const GetOrders = () => {
-        const url = reportUrl + props.user.userId;
+        const url = reportUrl + user.userId;
         const get = {
             method: 'GET',
             headers: {
