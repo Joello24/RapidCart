@@ -52,7 +52,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5000/api/auth/login", req)
+        fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     console.log(`Bad status: ${response.status}`);
@@ -87,7 +87,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5000/api/user", req)
+            return fetch("http://localhost:5051/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -109,7 +109,7 @@ function App() {
         })
     }
     const AddToCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "OrderId" : cartId,
@@ -152,7 +152,7 @@ function App() {
         });
     }
     const RemoveFromCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItem = {
             method: "DELETE",
@@ -176,7 +176,7 @@ function App() {
         });
     }
     const ClearCart = () => {
-        const cartUrl= "http://localhost:5000/api/cart";
+        const cartUrl= "http://localhost:5051/api/cart";
         const cart = {
             method: "DELETE",
             headers: {
