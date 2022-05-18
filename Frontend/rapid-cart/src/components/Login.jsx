@@ -7,14 +7,12 @@ function Login(props){
 
     function handleSubmit(evt) {
         evt.preventDefault();
-
         console.log("Logging in user:", username, password);
         const login = {
             UserName: username,
             Password: password
         };
-
-        props.login(login,props.goBack)
+        props.login(login, props.goBack, props.setIsOn, props.setMessage)
     }
     const handleChangeUser = function (evt) {
         setUsername(evt.target.value);
@@ -66,15 +64,29 @@ function Login(props){
                                 >
                             </div>
 
-                            <button
-                                type="submit"
-                                className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
-                            >
-                                Sign in
-                            </button>
+                            { props.isOn ?
+                                <button
+                                    type="submit"
+                                    className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    Sign in
+                                </button>:
+                                <button
+                                    type="submit"
+                                    disabled={true}
+                                    className="inline-block px-7 py-3 bg-red-300 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    Sign in
+                                </button>
+                            }
                         </form>
+                        <div>
+                            {props.message ? "Inavlid username or password" : ""}
+                        </div>
                     </div>
                 </div>
             </div>

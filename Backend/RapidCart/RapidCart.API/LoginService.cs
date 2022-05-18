@@ -13,7 +13,7 @@ namespace RapidCart.Web
     {
         public static Response<string> GetPasswordHash(string pass)
         {
-            Response<string> response = new Response<string>() { Success = true };
+            Response<string> response = new Response<string>() { Success = true};
             try
             {
                 using (SHA256 sha256Hash = SHA256.Create())
