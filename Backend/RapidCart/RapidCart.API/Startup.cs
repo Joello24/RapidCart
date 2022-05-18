@@ -18,8 +18,6 @@ using RapidCart.Core;
 using RapidCart.Core.Enums;
 using RapidCart.DAL;
 using RapidCart.DAL.Repositories;
-using RapidCart.Core;
-using RapidCart.Core;
 
 namespace RapidCart.Web
 {

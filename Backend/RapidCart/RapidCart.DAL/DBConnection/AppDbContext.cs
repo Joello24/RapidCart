@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RapidCart.Core;
-using RapidCart.Core;
 using RapidCart.Core.Entities;
 
 namespace RapidCart.DAL.DBConnection

@@ -24,6 +24,8 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [cartId, setCartId] = useState();
+    const [isOn, setIsOn] = useState(true);
+    const [message, setMessage] = useState();
 
     useEffect(() => {
         const sessionToken = sessionStorage.getItem("sessionToken");
@@ -45,7 +47,7 @@ function App() {
         getCart();
     }, [cartId,user]);
 
-    const handleLogin = (login, goBack) => {
+    const handleLogin = (login, goBack, setIsOn, setMessage) => {
         const loginInput = JSON.stringify({
             "UserName": login.UserName,
             "Password": login.Password
@@ -59,10 +61,12 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5000/api/auth/login", req)
+        setIsOn(false);
+        fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
-                    console.log(`Bad status: ${response.status}`);
+                    setMessage(`Bad status: ${response.status}`);
+                    setIsOn(true);
                     return Promise.reject("response is not 200 OK");
                 }
                 setLoggedIn(true);
@@ -77,8 +81,11 @@ function App() {
                 goBack();
                 return true;
             })  
+            .catch((e) => {
+                console.log(e);
+            })
     }
-    const handleSignUp = (signUp, goBack) => {
+    const handleSignUp = (signUp) => {
         const signUpInput = JSON.stringify({
             "FirstName" : signUp.firstName,
             "LastName" : signUp.lastName,
@@ -96,7 +103,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5000/api/user", req)
+            return fetch("http://localhost:5051/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -347,7 +354,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} currentCart={cartItems}/>} />
-                <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
+                <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)} setIsOn={setIsOn} isOn={isOn} message={message} setMessage={setMessage}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
                 <Route path="/cart" element={<Cart user={user} items={cartItems} incrementCount={incrementCount} decrementCount={decrementCount} getCart={getCart} getCartItems={getCartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
