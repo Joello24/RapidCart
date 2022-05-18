@@ -9,6 +9,7 @@ export default function Modal(props) {
     return (
         <>
             <button
+                hidden={true}
                 className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(true)}
@@ -63,10 +64,10 @@ export default function Modal(props) {
                                                     </div>
                                                 </div>
                                                 <div className="flex justify-center w-1/5">
-                                                    {item.count}
+                                                    {item.quantity}
                                                 </div>
-                                                <span className="text-center w-1/5 font-semibold text-sm">${item.price}</span>
-                                                <span className="text-center w-1/5 font-semibold text-sm">${item.price * item.count}</span>
+                                                <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice}</span>
+                                                <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice * item.quantity}</span>
                                             </div>
                                         ))}
                                     </p>

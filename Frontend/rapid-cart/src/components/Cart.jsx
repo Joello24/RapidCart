@@ -1,8 +1,8 @@
 ﻿import {useEffect, useState} from "react";
 import Modal from "./Popup";
 
-const orderItemURL = "http://localhost:5051/api/orderitem";
-const orderURL = "http://localhost:5051/api/order";
+const orderItemURL = "http://localhost:5000/api/orderitem";
+const orderURL = "http://localhost:5000/api/order";
 
 function Cart(props) {
 
@@ -29,17 +29,15 @@ function Cart(props) {
     }
 
     const IncrementCount = (item) => {
-        const items = [...cartItems];
-        const index = items.indexOf(item);
-        items[index].count++;
-        setCartItems(items);
+        item.quantity++;
+        props.incrementCount(item);
     }
 
     const DecrementCount = (item) => {
-        const items = [...cartItems];
-        const index = items.indexOf(item);
-        items[index].count--;
-        setCartItems(items);
+        if (item.quantity > 1) {
+            item.quantity--;
+            props.decrementCount(item);
+        }
     }
 
     const Total = () => {
@@ -100,9 +98,9 @@ function Cart(props) {
                 const orderItemBody = JSON.stringify({
                     "OrderId" : orderId,
                     "ItemId" : item.itemId,
-                    "ItemPrice" : item.price,
-                    "Quantity" : item.count,
-                    "TotalCost" : item.price * item.count
+                    "ItemPrice" : item.itemPrice,
+                    "Quantity" : item.quantity,
+                    "TotalCost" : item.itemPrice * item.quantity
                 });
                 const orderItem = {
                     method: "POST",
@@ -136,6 +134,7 @@ function Cart(props) {
                 postOrderItem().then(data => {
                     console.log("Response" + data);
                     setShowModal(true);
+                    // TODO: GET CART ITEMS FROM CART AND PLUG THEM INTO ORDER SUMMARY
                     const orderItems = [...cartItems];
                     const order = {
                         "orderId" : data.orderId,

@@ -175,7 +175,7 @@ function App() {
         const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItemBody = JSON.stringify({
-            "OrderId" : cartId,
+            "CartId" : cartId,
             "UserId" : user.userId,
             "ItemId" : item.itemId,
             "Quantity" : item.count,
@@ -257,6 +257,79 @@ function App() {
         // });
     }
 
+    // {
+    //     "CartId": 10,
+    //     "ItemId": 5,
+    //     "ItemPrice": 2.00,
+    //     "Quantity": 5,
+    //     "TotalPrice": 6.00
+    // }
+    const incrementCount = (item) => {
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
+
+        const cartItemBody = JSON.stringify({
+            "CartId" : cartId,
+            "ItemId" : item.itemId,
+            "ItemPrice" : item.itemPrice,
+            "Quantity" : item.quantity,
+            "TotalPrice" : item.itemPrice * item.quantity
+        });
+        const cartItem = {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: cartItemBody
+        };
+        function updateCartItem() {
+            return fetch(cartItemUrl,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        updateCartItem().then(data => {
+            console.log("Response" + data);
+            getCart();
+        });
+    }
+    const decrementCount = (item) => {
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
+
+        const cartItemBody = JSON.stringify({
+            "CartId" : item.cartId,
+            "ItemId" : item.itemId,
+            "ItemPrice" : item.itemPrice,
+            "Quantity" : item.quantity,
+            "TotalPrice" : item.itemPrice * item.quantity
+        });
+        const cartItem = {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: cartItemBody
+        };
+        function updateCartItem() {
+            return fetch(cartItemUrl,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        updateCartItem().then(data => {
+            console.log("Response" + data);
+            getCart();
+        });
+    }
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -276,7 +349,7 @@ function App() {
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} currentCart={cartItems}/>} />
                 <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
-                <Route path="/cart" element={<Cart user={user} items={cartItems} getCart={getCart} getCartItems={getCartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
+                <Route path="/cart" element={<Cart user={user} items={cartItems} incrementCount={incrementCount} decrementCount={decrementCount} getCart={getCart} getCartItems={getCartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
                 <Route path="/orderList" element={<OrderList user={user} />} />
             </Routes>
