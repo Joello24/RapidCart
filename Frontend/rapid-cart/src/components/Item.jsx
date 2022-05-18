@@ -1,11 +1,13 @@
 ﻿import AddedToCart from '../images/addedToCart.png';
 import {useState} from "react";
 import image from '../images/TestImages/americanCheese.jpeg';
+import AddItemForm from "./AddItemForm";
 
 function Item(props) {
 
     const [isInCart, setIsInCart] = useState(false);
     const [count, setCount] = useState(1);
+    const [isEditing, setIsEditing] = useState(true);
 
     const addToCart = () => {
         props.item.count = count;
@@ -18,6 +20,31 @@ function Item(props) {
     }
     const decrementCount = () => {
         setCount(count - 1);
+    }
+
+    const EditItem = (newItem) => {
+
+        newItem.itemId = props.item.itemId;
+        // TODO: check if edit boxes are empty, if so, don't set them to the old properties
+        if(newItem.name == undefined){
+            newItem.name=props.item.name;
+        }
+        if(newItem.price == undefined){
+            newItem.price = props.item.price;
+        }
+        if(newItem.inventory == undefined){
+            newItem.inventory = props.item.inventory;
+        }
+        if(newItem.description == undefined){
+            newItem.description = props.item.description;
+        }
+        if(newItem.path == undefined){
+            newItem.path = props.item.path;
+        }
+        if(newItem.categoryId == undefined){
+            newItem.categoryId = props.item.categoryId;
+        }
+        props.Edit(newItem);
     }
 
     return (
@@ -33,7 +60,7 @@ function Item(props) {
             </span>
             <span hidden={props.admin} >
                 <button  onClick={props.Delete} className= "absolute left-20 text-sm bg-green-300 p-2 rounded-bl-xl">Delete</button>
-                <button className= "absolute left-30 text-sm bg-green-300 p-2 rounded-bl-xl">Edit</button>
+                <button  onClick={() => setIsEditing(!isEditing)} className= "absolute left-30 text-sm bg-green-300 p-2 rounded-bl-xl">Edit</button>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
                      src= {props.path}
@@ -60,6 +87,9 @@ function Item(props) {
                         <button className=" w-1/12 bg-green-300 rounded-br-xl text-white font-extrabold">
                         </button>
                     </div>
+            </div>
+            <div hidden={isEditing}>
+                <AddItemForm hidden={isEditing} submit={EditItem} current={props.item} mini={true}/>
             </div>
         </div>
     )
