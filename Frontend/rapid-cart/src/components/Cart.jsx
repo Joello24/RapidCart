@@ -1,24 +1,9 @@
 ﻿import {useEffect, useState} from "react";
 import Modal from "./Popup";
 
-const orderItemURL = "http://localhost:5051/api/orderitem";
-const orderURL = "http://localhost:5051/api/order";
+const orderItemURL = "http://localhost:5000/api/orderitem";
+const orderURL = "http://localhost:5000/api/order";
 
-
-// ORDER ITEM BODY EXAMPLE
-// {
-//     "OrderId" : "1",
-//     "ItemId" : "1",
-//     "ItemPrice" : "500",
-//     "Quantity" : "2",
-//     "TotalCost" : "1000"
-// }
-// ORDER BODY EXAMPLE
-// {
-//     "UserId" : "1",
-//     "TotalCost" : "500",
-//     "DateCreated" : "2022-01-01"
-// }
 function Cart(props) {
 
     const [cartItems, setCartItems] = useState([props.items]);
@@ -34,28 +19,31 @@ function Cart(props) {
         Total();
     }, [cartItems]);
 
+    useEffect(() => {
+        props.getCart();
+    }, [setCartItems]);
+
+
     const RemoveFromCart = (item) => {
         props.removeFromCart(item);
     }
 
     const IncrementCount = (item) => {
-        const items = [...cartItems];
-        const index = items.indexOf(item);
-        items[index].count++;
-        setCartItems(items);
+        item.quantity++;
+        props.incrementCount(item);
     }
 
     const DecrementCount = (item) => {
-        const items = [...cartItems];
-        const index = items.indexOf(item);
-        items[index].count--;
-        setCartItems(items);
+        if (item.quantity > 1) {
+            item.quantity--;
+            props.decrementCount(item);
+        }
     }
 
     const Total = () => {
         let total = 0;
         cartItems.forEach(item => {
-            total += item.price * item.count;
+            total += item.itemPrice * item.quantity;
         }
         );
         setCartTotal(total);
@@ -110,9 +98,9 @@ function Cart(props) {
                 const orderItemBody = JSON.stringify({
                     "OrderId" : orderId,
                     "ItemId" : item.itemId,
-                    "ItemPrice" : item.price,
-                    "Quantity" : item.count,
-                    "TotalCost" : item.price * item.count
+                    "ItemPrice" : item.itemPrice,
+                    "Quantity" : item.quantity,
+                    "TotalCost" : item.itemPrice * item.quantity
                 });
                 const orderItem = {
                     method: "POST",
@@ -146,6 +134,7 @@ function Cart(props) {
                 postOrderItem().then(data => {
                     console.log("Response" + data);
                     setShowModal(true);
+                    // TODO: GET CART ITEMS FROM CART AND PLUG THEM INTO ORDER SUMMARY
                     const orderItems = [...cartItems];
                     const order = {
                         "orderId" : data.orderId,
@@ -161,13 +150,9 @@ function Cart(props) {
                 });
             });
         }
-
         const orderItemHeaders = {
-
         }
-
     }
-
     return (
 
     <div className="container mx-auto mt-10">
@@ -187,13 +172,13 @@ function Cart(props) {
                     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                         <div className="flex w-2/5">
                             <div className="w-20">
-                                <img className="h-24" src="https://i2.wp.com/ceklog.kindel.com/wp-content/uploads/2013/02/firefox_2018-07-10_07-50-11.png"
+                                <img className="h-24" src={item.path}
                                      alt="">
                                 </img>
                             </div>
                             <div className="flex flex-col justify-between ml-4 flex-grow">
                                 <span className="font-bold text-sm">{item.name}</span>
-                                <span className="text-red-500 text-xs">{item.categoryId}</span>
+                                <span className="text-red-500 text-xs">{item.category}</span>
                                 <button onClick={() => RemoveFromCart(item)} className="font-semibold bg-green-500 w-14 h-7 hover:text-red-600 font-bold text-black text-xs">Remove</button>
                             </div>
                         </div>
@@ -206,7 +191,7 @@ function Cart(props) {
                                 </svg>
                             </button>
 
-                            <input className="mx-2 border text-center w-8" type="text" value={item.count} />
+                            <input className="mx-2 border text-center w-8" type="text" value={item.quantity} />
                             <button onClick={() => IncrementCount(item)}>
                                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                                     <path
@@ -215,8 +200,8 @@ function Cart(props) {
                             </button>
 
                         </div>
-                        <span className="text-center w-1/5 font-semibold text-sm">${item.price}</span>
-                        <span className="text-center w-1/5 font-semibold text-sm">${item.price * item.count}</span>
+                        <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice}</span>
+                        <span className="text-center w-1/5 font-semibold text-sm">${item.itemPrice * item.quantity}</span>
                     </div>
 
 

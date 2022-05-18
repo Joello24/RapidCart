@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RapidCart.BLL\RapidCart.BLL.csproj" />
     <ProjectReference Include="..\RapidCart.Core\RapidCart.Core.csproj" />
     <ProjectReference Include="..\RapidCart.DAL\RapidCart.DAL.csproj" />
   </ItemGroup>

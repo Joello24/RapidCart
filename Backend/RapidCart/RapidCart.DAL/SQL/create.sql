@@ -66,7 +66,8 @@ CREATE TABLE OrderItem(
                           ItemId int not null foreign key references Item(ItemId),
                           Quantity int not null,
                           ItemPrice decimal,
-                          TotalCost decimal
+                          TotalCost decimal,
+                          
 )
 
 GO
