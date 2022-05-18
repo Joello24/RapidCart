@@ -1,5 +1,7 @@
-﻿import logo from './../logo.png';
+﻿import logo2 from './../logo.png';
 import './styles/welcomepage.css';
+import logo from './../images/RapidCartLogo.png';
+
 
 
 function Header({loggedIn,handleLogout}) {
@@ -9,7 +11,7 @@ function Header({loggedIn,handleLogout}) {
     }
     return(
         <nav className="flex items-center justify-between flex-wrap bg-green-500 p-6">
-            <div className="flex items-center flex-no-shrink text-white mr-6">
+            <div className="flex items-center flex-no-shrink text-yellow-500 mr-6">
                 {/*<svg className="h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"*/}
                 {/*     xmlns={logo}>*/}
 

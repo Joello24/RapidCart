@@ -109,7 +109,6 @@ namespace RapidCart.Web.Controllers
             }
         }
         
-        
         [HttpPut, Authorize]
         public IActionResult UpdateUser([FromBody] ViewUser viewUser)
         {
