@@ -16,14 +16,17 @@ namespace RapidCart.Web.Controllers
     public class CartController : Controller
     {
         private readonly ICartRepository _cartRepository;
+        
+        public CartController(ICartRepository cartRepository)
+        {
+            _cartRepository = cartRepository;
+        }
         // GET: api/<UserController>
         [HttpGet]
         [Route("/api/[controller]/{id}", Name = "GetCart")]
-        public IActionResult GetCart(int cartId, int userId)
+        public IActionResult GetCart(int id)
         {
-              
-        
-            var cart = _cartRepository.Get(userId, cartId);
+            var cart = _cartRepository.Get(id);
             if (cart.Success)
             {
                 return Ok(cart.Data);
@@ -76,7 +79,7 @@ namespace RapidCart.Web.Controllers
                     OrderId = model.OrderId
                 };
 
-                var cartToUpdate = _cartRepository.Get(cart.CartId, cart.UserId);
+                var cartToUpdate = _cartRepository.Get(cart.UserId);
                 if (cartToUpdate == null)
                 {
                     return NotFound();

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RapidCart.Core.Entities;
+using RapidCart.Web.ViewModels;
+using Category = RapidCart.Core.Enums.Category;
 
 namespace RapidCart.DAL.Repositories
 {
@@ -140,9 +142,10 @@ namespace RapidCart.DAL.Repositories
             return response;
         }
 
-        public Response<List<CartItem>> GetAll(int cartId)
+        public Response<List<ViewCartItem>> GetAll(int cartId)
         {
             var response = new Response<List<CartItem>>() { Success = true };
+            var ret = new Response<List<ViewCartItem>>();
             try
             {
                 using (var db = DbFac.GetDbContext())
@@ -160,7 +163,32 @@ namespace RapidCart.DAL.Repositories
                 response.Message = $"No CartItem found for CartId: {cartId}";
                 response.Success = false;
             }
-            return response;
+
+            using (var db = DbFac.GetDbContext())
+            {
+                List<ViewCartItem> cartItems = new List<ViewCartItem>();
+                foreach (var c in response.Data)
+                {
+                    ViewCartItem cartItem = new ViewCartItem();
+                    cartItem.CartId = c.CartId;
+                    cartItem.ItemId = c.ItemId;
+                    cartItem.ItemPrice = c.ItemPrice;
+                    cartItem.Quantity = c.Quantity;
+                    cartItem.TotalPrice = c.TotalPrice;
+
+                    cartItem.Name = db.Item.Where(i => i.ItemId == c.ItemId).Select(i => i.Name).FirstOrDefault();
+                    int cat = (db.Item.Where(i => i.ItemId == c.ItemId).Select(i => i.CategoryId).FirstOrDefault());
+                    Category category = (Category)cat;
+                    cartItem.Category = category.ToString();
+                    cartItem.Path = db.Item.Where(i => i.ItemId == c.ItemId).Select(i => i.Path).FirstOrDefault();
+
+                    cartItems.Add(cartItem);
+                    
+                }
+                ret.Data = cartItems;
+            }
+            ret.Success = true;
+            return ret;
         }
     }
 }

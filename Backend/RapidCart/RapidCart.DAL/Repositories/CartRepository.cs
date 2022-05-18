@@ -41,27 +41,54 @@ namespace RapidCart.DAL.Repositories
 
 
 
-        public Response<Cart> Get(int userId, int cartId)
+        public Response<Cart> Get(int userId)
         {
 
             var response = new Response<Cart>() { Success = true };
-            try
-            {
+            var cart = new Cart();
+            
                 using (var db = _dbFactory.GetDbContext())
                 {
-                    response.Data = db.Cart.Find(userId, cartId);
+                    try
+                    {
+                        cart = db.Cart.Where(i => i.UserId == userId && i.OrderId == null).OrderBy(i => i.CartId).LastOrDefault();
+                        if (cart == null)
+                        {
+                            if(userId != 0)
+                            {
+                                cart = new Cart()
+                                {
+                                    UserId = userId,
+                                    DateCreated = DateTime.Now,
+                                };
+                                var check = Insert(cart);
+                                if (!check.Success)
+                                {
+                                    response.Message = "No cart exists && unable to create cart for this user";
+                                    response.Success = false;
+                                    return response;
+                                }
+                            }
+                            else
+                            {
+                                response.Message = "UserId is required";
+                                response.Success = false;
+                                return response;
+                            }
+                            response.Message = "Cart not found";
+                            response.Success = false;
+                            return response;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        response.Message = ex.Message;
+                        response.Success = false;
+                        return response;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                response.Success = false;
-            }
-            if (response.Data == null)
-            {
-                response.Message = $"No Cart:{userId} found with Cart ID:{cartId}";
-                response.Success = false;
-            }
+            response.Data = cart;
+            response.Success = true;
             return response;
         }
         public Response<Cart> Insert(Cart cart)

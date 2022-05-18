@@ -52,7 +52,12 @@ namespace RapidCart.Web.Controllers
                 {
                     return BadRequest($"No Items where found for CartId:{id}");
                 }
-                return Ok(result.Data);
+                else
+                {
+                    
+                    
+                    return Ok(result.Data);
+                }
             }
             return BadRequest(result.Message);
         }
