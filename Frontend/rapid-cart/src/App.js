@@ -16,6 +16,7 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import Orders from "./components/Orders";
 import OrderList from "./components/OrderList";
+import Profile from "./components/Profile";
 
 function App() {
 
@@ -135,7 +136,7 @@ function App() {
                 "Accept": "application/json",
             }
         };
-        const url = "http://localhost:5000/api/cart/" + user.userId;
+        const url = "http://localhost:5051/api/cart/" + user.userId;
         function getCartId() {
             return fetch(url,get)
                 .then(response => {
@@ -152,7 +153,7 @@ function App() {
         });
     }
     const getCartItems = (cart) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem/GetAll/";
+        const cartItemUrl= "http://localhost:5051/api/cartitem/GetAll/";
         if(!cartId){
             setCartId(cart.cartId);
         }
@@ -179,7 +180,7 @@ function App() {
     }
 
     const AddToCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : cartId,
@@ -214,7 +215,7 @@ function App() {
     }
 
     const RemoveFromCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItem = {
             method: "DELETE",
@@ -272,7 +273,7 @@ function App() {
     //     "TotalPrice": 6.00
     // }
     const incrementCount = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : cartId,
@@ -305,7 +306,7 @@ function App() {
         });
     }
     const decrementCount = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : item.cartId,
@@ -359,6 +360,7 @@ function App() {
                 <Route path="/cart" element={<Cart user={user} items={cartItems} incrementCount={incrementCount} decrementCount={decrementCount} getCart={getCart} getCartItems={getCartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
                 <Route path="/orderList" element={<OrderList user={user} />} />
+                <Route path="/profile" element={<Profile user={user} viewOrders={""}/>} />
             </Routes>
         </div>
   );
