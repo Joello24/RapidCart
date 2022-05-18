@@ -69,7 +69,7 @@ namespace RapidCart.DAL.Tests
         public void GetGoodItemTest()
         {
             var actual = db.Get(1);
-            Assert.AreEqual("Yogurt - Plain", actual.Data.Name);
+            Assert.AreEqual("Beef Rib Eye", actual.Data.Name);
         }
         [Test]
         public void GetBadItemTest()

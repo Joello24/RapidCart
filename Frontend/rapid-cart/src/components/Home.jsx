@@ -2,9 +2,7 @@
 import './styles/welcomepage.css';
 import logo from './../images/RapidCartLogo.png';
 
-
 function Home(){
-
   return (
     <div className="text-center my-20 bg-slate-100 items-center min-h-center">
         <div class="flex-6 max-w-12xl p-10"> 

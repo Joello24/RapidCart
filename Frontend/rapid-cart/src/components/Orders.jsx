@@ -1,22 +1,24 @@
 ﻿import { useEffect, useState } from "react";
 import Order from "./Order";
 
-const url = "http://localhost:5051/api/order/user/1";
-
+const reportUrl = "http://localhost:5051/api/report/OrderReport/";
 
 
 
 function Orders(props) {
 
     // fetch orders from DB
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState();
+    const [orderReport, setOrderReport] = useState([]);
+    const [itemReportState, setItemReportState] = useState([]);
+    const [user, setUser] = useState(props.user);
 
     useEffect(() => {
         init();
-        GetOrders();
     }, [setOrders]);
 
     const GetOrders = () => {
+        const url = reportUrl + user.userId;
         const get = {
             method: 'GET',
             headers: {
@@ -26,19 +28,26 @@ function Orders(props) {
         fetch(url, get)
             .then(res => res.json())
             .then(data => {
-                setOrders(data);
+                setOrderReport(data);
                 console.log(data);
+                return data;
             })
             .catch(err => console.log(err));
+
     }
 
-    
     function newDate(date) {
         const year = date.substring(0, 4);
         const month = date.substring(5, 7);
         const day = date.substring(8, 10);
         const formatDate = month + "-" + day + "-" + year;
         return formatDate;
+    }
+
+    const setItemReport = (evt) => {
+        const report = orderReport.filter(order => order.orderId === evt);
+        console.log(evt);
+        setItemReportState(report.orderItems);
     }
     // fetch orderItems table by orderId and userId from DB
     // "orderId": 2,
@@ -66,7 +75,6 @@ function Orders(props) {
             });
         });
 
-
         orderOverlay.addEventListener('click', event => {
             orderOverlay.classList.add('hidden');
             orderBody.classList.remove('overflow-hidden');
@@ -81,15 +89,10 @@ function Orders(props) {
             orderPanel.classList.add('translate-x-full');
         })
     }
+
     return (
         <div className="orders">
-            {orders.map(order => (
-                <div>hi
-                    <Order key={order.orderId} orderNum={order.orderId} total={order.totalCost} date={order.dateCreated} />
-                </div>
-            ))}
-
-            <body className="text-gray-900 bg-gray-100 font-body" id="body" data-new-gr-c-s-check-loaded="14.1060.0" data-gr-ext-installed="">
+            <div className="text-gray-900 bg-gray-100 font-body" id="body" data-new-gr-c-s-check-loaded="14.1060.0" data-gr-ext-installed="">
 
                 <div className="pt-16 px-10 grid lg:grid-cols-5 pb-20">
 
@@ -149,45 +152,38 @@ function Orders(props) {
                             </ul>
                         </nav>
                     </div>
-                    
 
-                    
+
+
                     <main className="lg:col-span-4">
-                        
                         <div className="mt-16">
                             <div><span className="font-bold text-2xl md:text-4xl">Your past orders:</span></div>
 
                             <div className="mt-5 grid grid-cols-2 lg:grid-cols-1 gap-10">
 
-                                {orders.map ( o => (
+                                {orderReport.map ( o => (
 
-                                
                                 <div className="bg-white rounded-lg shadow-md lg:border-l-8 border-gray-800 text-center hover:shadow-lg order">
                                     <div className="grid grid-cols-1 lg:grid-cols-4">
                                         <div className="bg-green-500 p-3">
                                             <span className="font-bold text-lg">{newDate(o.dateCreated)}</span>
                                         </div>
                                         <div className="p-3">
-                                            <span className="font-bold text-md">8 items</span>
+                                            <span className="font-bold text-md">{o.orderItems.length}</span>
                                         </div>
                                         <div className="p-3">
                                             <span className="font-bold text-md">${o.totalCost}</span>
                                         </div>
                                         <div className="p-3">
-                                            <button className="rounded-lg bg-green-500 px-3 py-1 font-bold">Order details</button>
+                                            <button onClick={() => setItemReportState(o.orderItems)} className="rounded-lg bg-green-500 px-3 py-1 font-bold">Order details</button>
                                         </div>
                                     </div>
                                 </div>
                                     ))}
-
                             </div>
-
                         </div>
-
-
                     </main>
-                    
-                    
+
                     <aside className="transform top-0 right-0 w-full md:w-2/5 shadow-2xl bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 translate-x-full" id="cart-panel">
                         <div className="p-8">
                             <button className="bg-gray-200 py-2 px-6 rounded-full" id="close-cart-panel"><i className="fas fa-times"></i></button>
@@ -202,21 +198,14 @@ function Orders(props) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="border px-4 py-2">Bacon Jammer</td>
-                                            <td className="border px-4 py-2">2x</td>
-                                            <td className="border px-4 py-2">$ 3.50</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="border px-4 py-2">Pepperoni Lover</td>
-                                            <td className="border px-4 py-2">3x</td>
-                                            <td className="border px-4 py-2">$ 1.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="border px-4 py-2">Sanguine Refresher</td>
-                                            <td className="border px-4 py-2">1x</td>
-                                            <td className="border px-4 py-2">$ 2.50</td>
-                                        </tr>
+                                        {itemReportState.map ( i => (
+                                            <tr>
+                                                <td className="border px-4 py-2">{i.itemId}</td>
+                                                <td className="border px-4 py-2">{i.quantity}</td>
+                                                <td className="border px-4 py-2">${i.totalCost}</td>
+                                            </tr>
+                                        ))}
+
                                     </tbody>
                                 </table>
                                 <div className="mt-5 text-lg">Total: <span className="text-custom-yellow">$12.50</span></div>
@@ -224,6 +213,7 @@ function Orders(props) {
                             </main>
                         </div>
                     </aside>
+
                     <aside className="transform top-0 right-0 w-full md:w-2/5 shadow-2xl bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 translate-x-full" id="order-panel">
                         <div className="p-8">
                             <button className="bg-gray-200 py-2 px-6 rounded-full" id="close-order-panel"><i className="fas fa-times"></i></button>
@@ -238,21 +228,13 @@ function Orders(props) {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    {itemReportState.map ( i => (
                                         <tr>
-                                            <td className="border px-4 py-2">Bacon Jammer</td>
-                                            <td className="border px-4 py-2">2x</td>
-                                            <td className="border px-4 py-2">$ 3.50</td>
+                                            <td className="border px-4 py-2">{i.itemId}</td>
+                                            <td className="border px-4 py-2">{i.quantity}</td>
+                                            <td className="border px-4 py-2">${i.totalCost}</td>
                                         </tr>
-                                        <tr>
-                                            <td className="border px-4 py-2">Pepperoni Lover</td>
-                                            <td className="border px-4 py-2">3x</td>
-                                            <td className="border px-4 py-2">$ 1.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="border px-4 py-2">Sanguine Refresher</td>
-                                            <td className="border px-4 py-2">1x</td>
-                                            <td className="border px-4 py-2">$ 2.50</td>
-                                        </tr>
+                                    ))}
                                     </tbody>
                                 </table>
                                 <div className="mt-5 text-lg">Total: <span className="text-custom-yellow">$12.50</span></div>
@@ -261,12 +243,7 @@ function Orders(props) {
                     </aside>
                 </div>
 
-                <script src="js/cart.js"></script>
-                <script src="js/nav.js"></script>
-                <script src="js/orders.js"></script>
-
-
-            </body>
+            </div>
         </div>
     )
 }

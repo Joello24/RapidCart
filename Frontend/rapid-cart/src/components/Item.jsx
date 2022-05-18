@@ -1,5 +1,6 @@
 ﻿import AddedToCart from '../images/addedToCart.png';
 import {useState} from "react";
+import image from '../images/TestImages/americanCheese.jpeg';
 
 function Item(props) {
 
@@ -9,6 +10,7 @@ function Item(props) {
     const addToCart = () => {
         props.item.count = count;
         setIsInCart(true);
+        props.item.isInCart = true;
         props.add();
     }
     const incrementCount = () => {
@@ -26,11 +28,11 @@ function Item(props) {
                     props.discount < .10 ? props.discount.toString().slice(3, 4) : props.discount.toString().slice(2, 4)
                 }%
 			</span>
-            <span hidden={!isInCart} className= "absolute top-0 right-0 text-sm bg-green-300 p-2 rounded-bl-xl">
+            <span hidden={!props.item.isInCart} className= "absolute top-0 right-0 text-sm bg-green-300 p-2 rounded-bl-xl">
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
-                     src="https://i2.wp.com/ceklog.kindel.com/wp-content/uploads/2013/02/firefox_2018-07-10_07-50-11.png"
+                     src= {props.path}
                      alt="" />
                     <div className="p-5">
                         <h2 className="text-lg">Stock: {props.inventory}</h2>
@@ -39,15 +41,19 @@ function Item(props) {
                             className="line-through text-sm text-red-500">${props.price}</span></h4>
                     </div>
                     <div className="flex">
-                        <button onClick={addToCart} className="py-3 w-9/12 bg-yellow-300 rounded-bl-xl text-white font-extrabold">Add to
-                            cart
+                        <button onClick={isInCart == true ? console.log("Already in cart") : addToCart} className="py-3 w-9/12 bg-green-300 rounded-bl-xl text-white font-extrabold">
+                            {isInCart == true ? "Added" : "Add to cart"}
                         </button>
                         <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={decrementCount} >
                             -
                         </button>
-                        <span className="text-sm">{count}</span>
-                        <button className="bg-red-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
+
+                        <span className="text-sm text-center my-3 font-bold">{count}</span>
+                        <button className="bg-green-600 px-2 mx-2 box-border text-white font-bold" onClick={incrementCount} >
+
                             +
+                        </button>
+                        <button className=" w-1/12 bg-green-300 rounded-br-xl text-white font-extrabold">
                         </button>
                     </div>
             </div>

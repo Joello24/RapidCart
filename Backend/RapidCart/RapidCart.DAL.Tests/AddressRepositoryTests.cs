@@ -42,7 +42,7 @@ namespace RapidCart.DAL.Tests
             expected.AddressId = 2;
 
             Assert.AreEqual(expected.AddressId, db.Get(2).Data.AddressId);
-            Assert.AreEqual("Minneapolis", db.Get(2).Data.AddressId);
+            Assert.AreEqual("Minneapolis", db.Get(2).Data.City);
 
         }
 

@@ -1,7 +1,9 @@
 ﻿import {useEffect, useState} from "react";
+import Modal from "./Popup";
 
-const orderItemURL = "http://localhost:5000/api/orderitem";
-const orderURL = "http://localhost:5000/api/order";
+const orderItemURL = "http://localhost:5051/api/orderitem";
+const orderURL = "http://localhost:5051/api/order";
+
 
 // ORDER ITEM BODY EXAMPLE
 // {
@@ -21,6 +23,8 @@ function Cart(props) {
 
     const [cartItems, setCartItems] = useState([props.items]);
     const [cartTotal, setCartTotal] = useState();
+    const [showModal, setShowModal] = useState(false);
+    const [orderSummary, setOrderSummary] = useState();
 
     useEffect(() => {
         setCartItems(props.items);
@@ -74,7 +78,7 @@ function Cart(props) {
         const date = year + "-" + month + "-" + day;
 
         const addBody = JSON.stringify({
-            "UserId" : "1",
+            "UserId" : props.user.userId,
             "TotalCost" : cartTotal,
             "DateCreated" : date
         });
@@ -99,6 +103,7 @@ function Cart(props) {
         postOrder().then(data => {
             console.log(data);
             AddOrderItems(data.data.orderId);
+
         });
         function AddOrderItems(orderId) {
             cartItems.forEach(item => {
@@ -127,8 +132,32 @@ function Cart(props) {
                             return response.json();
                         })
                 };
+                // {
+                //     "data": {
+                //     "orderId": 7,
+                //     "userId": 1,
+                //         "totalCost": 500,
+                //         "dateCreated": "2022-01-01T00:00:00",
+                //         "orderItems": null
+                // },
+                //     "success": true,
+                //     "message": null
+                // }
                 postOrderItem().then(data => {
-                    console.log(data);
+                    console.log("Response" + data);
+                    setShowModal(true);
+                    const orderItems = [...cartItems];
+                    const order = {
+                        "orderId" : data.orderId,
+                        "totalCost" : data.cartTotal,
+                        "dateCreated" : data.sendDate,
+                        "orderItems" : orderItems
+                    };
+                    console.log("Order"+ order);
+                    setOrderSummary(order);
+                    props.clearCart();
+
+
                 });
             });
         }
@@ -137,16 +166,11 @@ function Cart(props) {
 
         }
 
-
-
-
-
     }
 
     return (
 
     <div className="container mx-auto mt-10">
-        in cart
         <div className="flex shadow-md my-10">
             <div className="w-3/4 bg-white px-10 py-10">
                 <div className="flex justify-between border-b pb-8">
@@ -223,10 +247,8 @@ function Cart(props) {
                 <div className="border-t mt-8">
                     <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total cost</span>
-                        {/*TODO: THIS IS JUST TOTAL COST + SHIPPING */}
                         <span>${cartTotal+10}</span>
                     </div>
-                    {/*TODO: CHECKOUT SHOULD SUBMIT AN ORDER TO DATEBASE*/}
 
                     <button
                         className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full" onClick={SubmitOrder}>Checkout
@@ -234,6 +256,8 @@ function Cart(props) {
                 </div>
             </div>
             </div>
+
+        <Modal showModal={showModal} OrderSummary={orderSummary} total={cartTotal}/>
     </div>
 )
 }

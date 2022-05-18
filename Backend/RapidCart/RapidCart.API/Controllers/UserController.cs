@@ -39,7 +39,7 @@ namespace RapidCart.Web.Controllers
         }
 
         [HttpGet]
-        [Route("/api/[controller]/{id}")]
+        [Route("/api/[controller]/GetByEmail/{email}")]
         public IActionResult GetByEmail(string email)
         {
             var user = _userRepository.GetByEmail(email);

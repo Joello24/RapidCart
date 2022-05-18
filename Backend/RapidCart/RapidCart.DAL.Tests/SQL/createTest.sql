@@ -20,7 +20,7 @@ CREATE TABLE [User] (
                         UserId int primary key identity(1,1),
                         FirstName nvarchar(50) not null,
                         LastName nvarchar(50) not null,
-                        Email nvarchar(50) not null,
+                        Email nvarchar(50) not null UNIQUE,
                         [Password] nvarchar(250) not null,
                         Phone nvarchar(20) not null,
                         PermissionId int not null foreign key references [Permissions](PermissionId)
@@ -46,6 +46,14 @@ CREATE TABLE [Order] (
 )
 GO
 
+CREATE TABLE [Cart](
+                        CartId int primary key identity(1,1),
+                        UserId int not null foreign key references [User](UserId),
+                        DateCreated datetime2 null,
+                        OrderId int null foreign key references [Order](OrderId)
+)
+
+
 CREATE TABLE Category(
                          CategoryId int primary key identity (1,1),
                          [Name] nvarchar(50),
@@ -57,7 +65,18 @@ CREATE TABLE Item (
                       [Name] nvarchar(100),
                       [Description] nvarchar(150),
                       Price decimal,
-                      Inventory int
+                      Inventory int,
+                      [Path] NVARCHAR(MAX)
+)
+
+GO 
+
+CREATE TABLE [CartItem](
+                           CartId int not null foreign key references [Cart](CartId),
+                           ItemId int not null foreign key references Item(ItemId),
+                           Quantity int not null,
+                           ItemPrice decimal not null,
+                           TotalPrice decimal not null
 )
 GO
 
