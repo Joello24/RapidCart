@@ -25,34 +25,40 @@ namespace RapidCart.Web.Controllers
         [HttpPost, Route("login")]
         public IActionResult Login(LoginModel user)
         {
-            if (user == null)
+            if (ModelState.IsValid)
             {
-                return BadRequest("Invalid request");
-            }
-            var response = _userRepository.GetByEmail(user.UserName);      // implement new GetByUsername()
-            var inputHash = LoginService.GetPasswordHash(user.Password);
+                var response = _userRepository.GetByEmail(user.UserName);      // implement new GetByUsername()
+                if(!response.Success)
+                {
+                    return BadRequest("Invalid Username/Email");
+                }
+                var inputHash = LoginService.GetPasswordHash(user.Password);
+                if (inputHash.Data == response.Data.Password)
+                {
+                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
+                    var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-            if (inputHash.Data == response.Data.Password)
-            {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                var tokeOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:3000",
-                    audience: "http://localhost:3000",
-                    claims: new List<Claim>(),
-                    expires: DateTime.Now.AddMinutes(300),
-                    signingCredentials: signinCredentials
-                );
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { 
-                                Token = tokenString,
-                                User = response.Data
-                                });
+                    var tokeOptions = new JwtSecurityToken(
+                        issuer: "http://localhost:3000",
+                        audience: "http://localhost:3000",
+                        claims: new List<Claim>(),
+                        expires: DateTime.Now.AddMinutes(300),
+                        signingCredentials: signinCredentials
+                    );
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+                    return Ok(new { 
+                                    Token = tokenString,
+                                    User = response.Data
+                                    });
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
             else
             {
-                return Unauthorized();
+                return BadRequest(ModelState);
             }
         }
     }

@@ -13,12 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RapidCart.BLL;
 using RapidCart.Core;
 using RapidCart.Core.Enums;
 using RapidCart.DAL;
 using RapidCart.DAL.Repositories;
-using RapidCart.Core;
-using RapidCart.Core;
 
 namespace RapidCart.Web
 {
@@ -63,6 +62,7 @@ namespace RapidCart.Web
             
             var fac = new DBFactory(AppMode.Live);
             services.AddControllers();
+            
             services.AddTransient<ICategoryRepository>(r => new CategoryRepository(fac));
             services.AddTransient<IOrderRepository>(r => new OrderRespository(fac));
             services.AddTransient<IUserRepository>(r => new UserRepository(fac));

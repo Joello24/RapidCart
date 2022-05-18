@@ -17,14 +17,15 @@ import Cart from "./components/Cart";
 import Orders from "./components/Orders";
 import OrderList from "./components/OrderList";
 
-
 function App() {
 
     const [token, setToken] = useState();
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(0);
     const [loggedIn, setLoggedIn] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [cartId, setCartId] = useState();
+    const [isOn, setIsOn] = useState(true);
+    const [message, setMessage] = useState();
 
     useEffect(() => {
         const sessionToken = sessionStorage.getItem("sessionToken");
@@ -33,12 +34,20 @@ function App() {
             setLoggedIn(true);
         }
         const sessionUser = sessionStorage.getItem("sessionUser");
-        if(sessionUser){ 
+        if(sessionUser){
             setUser(JSON.parse(sessionUser));
         }
-      }, []); 
+        const sessionCart = sessionStorage.getItem("sessionCart");
+        if(sessionCart){
+            setCartId(JSON.parse(sessionCart));
+        }
+      }, []);
 
-    const handleLogin = (login, goBack) => {
+    useEffect( () => {
+        getCart();
+    }, [cartId,user]);
+
+    const handleLogin = (login, goBack, setIsOn, setMessage) => {
         const loginInput = JSON.stringify({
             "UserName": login.UserName,
             "Password": login.Password
@@ -52,10 +61,14 @@ function App() {
             },
             body: loginInput,
         };
+
+        // setIsOn(false);
+
         fetch("http://localhost:5051/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
-                    console.log(`Bad status: ${response.status}`);
+                    setMessage(`Bad status: ${response.status}`);
+                    setIsOn(true);
                     return Promise.reject("response is not 200 OK");
                 }
                 setLoggedIn(true);
@@ -66,10 +79,15 @@ function App() {
                 sessionStorage.setItem("sessionToken", token);
                 setUser(json.user);
                 sessionStorage.setItem("sessionUser", JSON.stringify(json.user));
+                getCart();
                 goBack();
+                return true;
             })  
+            .catch((e) => {
+                console.log(e);
+            })
     }
-    const handleSignUp = (signUp, goBack) => {
+    const handleSignUp = (signUp) => {
         const signUpInput = JSON.stringify({
             "FirstName" : signUp.firstName,
             "LastName" : signUp.lastName,
@@ -108,11 +126,66 @@ function App() {
             handleLogin(login, () => navigate(-2));
         })
     }
+
+    const getCart = () => {
+        if(user.userId ==0 || user.userId == null || user.userId == undefined){
+            return;
+        }
+        const get = {
+            method: 'GET',
+            headers: {
+                "Accept": "application/json",
+            }
+        };
+        const url = "http://localhost:5000/api/cart/" + user.userId;
+        function getCartId() {
+            return fetch(url,get)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        getCartId().then(data => {
+            sessionStorage.setItem("sessionCart", JSON.stringify(data.cartId));
+            getCartItems(data);
+        });
+    }
+    const getCartItems = (cart) => {
+        const cartItemUrl= "http://localhost:5000/api/cartitem/GetAll/";
+        if(!cartId){
+            setCartId(cart.cartId);
+        }
+        const cartItem = {
+            method: 'GET',
+            headers: {
+                "Accept": "application/json",
+            }
+        };
+        function fetchCartItems() {
+            return fetch(cartItemUrl+cartId,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        fetchCartItems().then(data => {
+            console.log(data);
+            setCartItems(data);
+        });
+    }
+
     const AddToCart = (item) => {
         const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
-            "OrderId" : cartId,
+            "CartId" : cartId,
+            "UserId" : user.userId,
             "ItemId" : item.itemId,
             "Quantity" : item.count,
             "ItemPrice" : item.price,
@@ -136,21 +209,12 @@ function App() {
                     return response.json();
                 })
         };
-        // {
-        //     "data": {
-        //     "orderId": 7,
-        //     "userId": 1,
-        //         "totalCost": 500,
-        //         "dateCreated": "2022-01-01T00:00:00",
-        //         "orderItems": null
-        // },
-        //     "success": true,
-        //     "message": null
-        // }
         postCartItem().then(data => {
             console.log("Response" + data);
+            getCart();
         });
     }
+
     const RemoveFromCart = (item) => {
         const cartItemUrl= "http://localhost:5051/api/cartitem";
 
@@ -162,7 +226,7 @@ function App() {
             },
         };
         function deleteCartItem() {
-            return fetch(cartItemUrl + "/"+ item.itemId + "/" + cartId,cartItem)
+            return fetch(cartItemUrl + "/" + cartId + "/" + item.itemId,cartItem)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -170,13 +234,15 @@ function App() {
                     }
                     return response.json();
                 })
-        };
+        }
         deleteCartItem().then(data => {
             console.log("Response" + data);
+            getCart();
         });
     }
+
     const ClearCart = () => {
-        const cartUrl= "http://localhost:5051/api/cart";
+        const cartUrl= "http://localhost:5000/api/cart";
         const cart = {
             method: "DELETE",
             headers: {
@@ -196,12 +262,77 @@ function App() {
         };
         deleteCart().then(data => {
             console.log("Response" + data);
+            getCart();
         });
     }
+    const incrementCount = (item) => {
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
+        const cartItemBody = JSON.stringify({
+            "CartId" : cartId,
+            "ItemId" : item.itemId,
+            "ItemPrice" : item.itemPrice,
+            "Quantity" : item.quantity,
+            "TotalPrice" : item.itemPrice * item.quantity
+        });
+        const cartItem = {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: cartItemBody
+        };
+        function updateCartItem() {
+            return fetch(cartItemUrl,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        updateCartItem().then(data => {
+            console.log("Response" + data);
+            getCart();
+        });
+    }
+    const decrementCount = (item) => {
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
+
+        const cartItemBody = JSON.stringify({
+            "CartId" : item.cartId,
+            "ItemId" : item.itemId,
+            "ItemPrice" : item.itemPrice,
+            "Quantity" : item.quantity,
+            "TotalPrice" : item.itemPrice * item.quantity
+        });
+        const cartItem = {
+            method: "PUT",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            body: cartItemBody
+        };
+        function updateCartItem() {
+            return fetch(cartItemUrl,cartItem)
+                .then(response => {
+                    if (response.status !== 200 && response.status !== 201) {
+                        console.log(`Bad status: ${response.status}`);
+                        return Promise.reject("response is not 200 OK");
+                    }
+                    return response.json();
+                })
+        };
+        updateCartItem().then(data => {
+            console.log("Response" + data);
+            getCart();
+        });
+    }
     const navigate = useNavigate();
 
-    // TODO: LOGOUT SEEMS TO BE WORKING, BUT IT REDIRECTS TO THE LOGIN PAGE INSTEAD OF HOME PAGE
     const handleLogout = () => {
         setLoggedIn(false);
         sessionStorage.removeItem("sessionToken");
@@ -217,9 +348,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} currentCart={cartItems}/>} />
-                <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)}/>} />
+                <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)} setIsOn={setIsOn} isOn={isOn} message={message} setMessage={setMessage}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
-                <Route path="/cart" element={<Cart user={user} items={cartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
+                <Route path="/cart" element={<Cart user={user} items={cartItems} incrementCount={incrementCount} decrementCount={decrementCount} getCart={getCart} getCartItems={getCartItems} removeFromCart={RemoveFromCart} clearCart={ClearCart}/>} />
                 <Route path="/orders" element={<Orders user={user} />} />
                 <Route path="/orderList" element={<OrderList user={user} />} />
             </Routes>
