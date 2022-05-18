@@ -18,13 +18,13 @@ namespace RapidCart.Web.ViewModels
         [StringLength(50, ErrorMessage = "Last name must be less than 50 characters.")]
         public string LastName { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "Email must be less than 50 characters.")]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
         [StringLength(250, ErrorMessage = "Password must be less than 250 characters.")]
         public string Password { get; set; }
         [Required]
-        [StringLength(20, ErrorMessage = "Phone must be less than 50 characters.")]
+        [Phone]
         public string Phone { get; set; }
         public int PermissionId { get; set; }
     }

@@ -115,7 +115,7 @@ function App() {
         })
     }
     const AddToCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "OrderId" : cartId,
@@ -158,7 +158,7 @@ function App() {
         });
     }
     const RemoveFromCart = (item) => {
-        const cartItemUrl= "http://localhost:5000/api/cartitem";
+        const cartItemUrl= "http://localhost:5051/api/cartitem";
 
         const cartItem = {
             method: "DELETE",
@@ -182,7 +182,7 @@ function App() {
         });
     }
     const ClearCart = () => {
-        const cartUrl= "http://localhost:5000/api/cart";
+        const cartUrl= "http://localhost:5051/api/cart";
         const cart = {
             method: "DELETE",
             headers: {
