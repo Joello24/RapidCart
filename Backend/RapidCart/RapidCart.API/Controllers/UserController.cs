@@ -90,6 +90,12 @@ namespace RapidCart.Web.Controllers
                     Phone = viewUser.Phone,
                     PermissionId = 2,
                 };
+                if(!String.IsNullOrWhiteSpace(txtEmail.Text.Contains("@") && txtEmail.Text.Contains(".")) { 
+
+                    //continue with UserInput
+                
+                } else { MessageBox.Show("Error - email format incorrect"); }
+
                 var result = _userRepository.Insert(user);
                 if (result.Success)
                 {
