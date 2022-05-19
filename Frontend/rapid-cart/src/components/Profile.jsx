@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Order from "./Order";
-const reportUrl = "http://localhost:5051/api/report/OrderReport/";
+const reportUrl = "http://localhost:5000/api/report/OrderReport/";
 
 function Profile(props) {
     const [isViewing, setIsViewing] = useState(false);

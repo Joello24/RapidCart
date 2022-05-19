@@ -4,11 +4,11 @@ import Example from "./CategoryDropdown";
 import { Route } from 'react-router-dom';
 import AddItem from './AddItemForm';
 
-const url = 'http://localhost:5051/api/item';
+const url = 'http://localhost:5000/api/item';
 
-const searchurl = "http://localhost:5051/api/report/search/";
+const searchurl = "http://localhost:5000/api/report/search/";
 
-const sortByCategoryurl = "http://localhost:5051/api/report/GetByCategory/";
+const sortByCategoryurl = "http://localhost:5000/api/report/GetByCategory/";
 
 function Shop (props) {
 

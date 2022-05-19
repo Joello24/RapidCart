@@ -10,7 +10,7 @@ function OrderItem(props){
       }, []);
 
     const GetItemDetails = (id) => {
-        const url = "http://localhost:5051/api/item/" + id;
+        const url = "http://localhost:5000/api/item/" + id;
         const get = {
             method: 'GET',
             headers: {

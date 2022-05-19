@@ -62,7 +62,7 @@ function App() {
             },
             body: loginInput,
         };
-        fetch("http://localhost:5051/api/auth/login", req)
+        fetch("http://localhost:5000/api/auth/login", req)
             .then(response => {
                 if (response.status !== 200) {
                     setMessage(`Bad status: ${response.status}`);
@@ -103,7 +103,7 @@ function App() {
             body: signUpInput,
         };
         function add() {
-            return fetch("http://localhost:5051/api/user", req)
+            return fetch("http://localhost:5000/api/user", req)
                 .then(response => {
                     if (response.status !== 200 && response.status !== 201) {
                         console.log(`Bad status: ${response.status}`);
@@ -135,7 +135,7 @@ function App() {
                 "Accept": "application/json",
             }
         };
-        const url = "http://localhost:5051/api/cart/" + user.userId;
+        const url = "http://localhost:5000/api/cart/" + user.userId;
         function getCartId() {
             return fetch(url,get)
                 .then(response => {
@@ -152,7 +152,7 @@ function App() {
         });
     }
     const getCartItems = (cart) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem/GetAll/";
+        const cartItemUrl= "http://localhost:5000/api/cartitem/GetAll/";
         if(!cartId){
             setCartId(cart.cartId);
         }
@@ -180,7 +180,7 @@ function App() {
     }
 
     const AddToCart = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : cartId,
@@ -215,7 +215,7 @@ function App() {
     }
 
     const RemoveFromCart = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItem = {
             method: "DELETE",
@@ -241,7 +241,7 @@ function App() {
     }
 
     const ClearCart = (id) => {
-    const cartUrl= "http://localhost:5051/api/cartitem/ClearCart";
+    const cartUrl= "http://localhost:5000/api/cartitem/ClearCart";
         const cart = {
             method: "DELETE",
             headers: {
@@ -266,7 +266,7 @@ function App() {
     }
 
     const incrementCount = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : cartId,
@@ -299,7 +299,7 @@ function App() {
         });
     }
     const decrementCount = (item) => {
-        const cartItemUrl= "http://localhost:5051/api/cartitem";
+        const cartItemUrl= "http://localhost:5000/api/cartitem";
 
         const cartItemBody = JSON.stringify({
             "CartId" : item.cartId,

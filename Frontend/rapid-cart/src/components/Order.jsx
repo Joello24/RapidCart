@@ -27,7 +27,7 @@ function Order(props) {
     const [item, setItem] = useState([]);
 
     const GetItemDetails = (id, setIsHidden) => {
-        const url = "http://localhost:5051/api/item/" + id;
+        const url = "http://localhost:5000/api/item/" + id;
         const get = {
             method: 'GET',
             headers: {

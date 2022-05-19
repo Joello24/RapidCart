@@ -1,8 +1,8 @@
 ﻿import {useEffect, useState} from "react";
 import Modal from "./Popup";
 
-const orderItemURL = "http://localhost:5051/api/orderitem";
-const orderURL = "http://localhost:5051/api/order";
+const orderItemURL = "http://localhost:5000/api/orderitem";
+const orderURL = "http://localhost:5000/api/order";
 
 function Cart(props) {
 
