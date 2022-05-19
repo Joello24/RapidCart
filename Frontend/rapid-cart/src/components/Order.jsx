@@ -65,7 +65,7 @@ function Order(props) {
                 </div>
             </div>
             <div hidden={isHidden}>
-                <div className="flex py-10 bg-amber-200 mt-1 mb-1">
+                <div className="flex py-10 bg-stone-200 mt-1 mb-1">
                     <h3 className="font-bold text-gray-600 text-sm uppercase pl-20 w-2/5">Product Details</h3>
                     <h3 className="font-bold text-center text-gray-600 text-sm uppercase w-1/5 text-center">Quantity</h3>
                     <h3 className="font-bold text-center text-gray-600 text-sm uppercase w-1/5 text-center">Price</h3>
