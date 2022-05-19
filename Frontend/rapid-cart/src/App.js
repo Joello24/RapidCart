@@ -17,6 +17,7 @@ import Cart from "./components/Cart";
 import Orders from "./components/Orders";
 import OrderList from "./components/OrderList";
 import Profile from "./components/Profile";
+import Home2 from "./components/Home2";
 
 function App() {
 
@@ -346,7 +347,7 @@ function App() {
         <div>
             <Header loggedIn={loggedIn} handleLogout={handleLogout}/>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home2 />} />
                 <Route path="/shop" element={<Shop setCartItems={AddToCart} currentCart={cartItems}/>} />
                 <Route path="/login" element={<Login login={handleLogin} goBack={() => navigate(-1)} setIsOn={setIsOn} isOn={isOn} message={message} setMessage={setMessage}/>} />
                 <Route path="/signUp" element={<SignUp signUp={handleSignUp} goBack={() => navigate(-1)}/>} />
