@@ -88,5 +88,5 @@ CREATE TABLE OrderItem(
                           TotalCost decimal,
                           primary key (OrderId, ItemId)
 )
-
 GO
+

@@ -244,6 +244,33 @@ namespace RapidCart.DAL.Repositories
             return response;
         }
 
+        public Response<CartItem> IncrementCount(CartItem cartItem, int quantity)
+        {
+            var response = new Response<CartItem>();
+            try
+            {
+                using (var db = DbFac.GetDbContext())
+                {
+                    var cartItemDb = db.CartItem.Where(i => i.ItemId == cartItem.ItemId && i.CartId == cartItem.CartId).FirstOrDefault();
+                    cartItemDb.Quantity += quantity;
+                    cartItemDb.TotalPrice = cartItemDb.ItemPrice * cartItemDb.Quantity;
+                    db.SaveChanges();
+                    response.Data = cartItemDb;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            if (response.Data == null)
+            {
+                response.Message = $"Failed to update CartItem:{cartItem.ItemId} CartId:{cartItem.CartId}";
+                response.Success = false;
+            }
+            return response;
+        }
+
         public Response<CartItem> DecrementCount(CartItem cartItem)
         {
             var response = new Response<CartItem>();
@@ -276,6 +303,30 @@ namespace RapidCart.DAL.Repositories
                 response.Message = $"Failed to update CartItem:{cartItem.ItemId} CartId:{cartItem.CartId}";
                 response.Success = false;
             }
+            return response;
+        }
+
+        public Response ClearCart(int cartId)
+        {
+            Response response = new Response();
+            try
+            {
+                using (var db = DbFac.GetDbContext())
+                {
+                    var cartItems = db.CartItem.Where(i => i.CartId == cartId).ToList();
+                    foreach (var cartItem in cartItems)
+                    {
+                        db.CartItem.Remove(cartItem);
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            response.Success = true;
             return response;
         }
     }

@@ -155,6 +155,7 @@ BEGIN
     insert into [Order] (UserId, TotalCost, DateCreated) values (2, 92, '3/11/2022');
     insert into [Order] (UserId, TotalCost, DateCreated) values (3, 68, '9/19/2021');
 
+
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (7, 'Beef Rib Eye', 'nunc donec', 51.34, 66, 'https://i5.walmartimages.com/asr/6feb2cc9-9593-4553-bf8c-adc55f988c51.0134d480fbddd0f38c7f3d6a8e5d1e0e.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (2, 'Choclate Cake', 'nam congue', 96.42, 49, 'https://i5.walmartimages.com/asr/be194135-1cf4-4312-bf84-a4fbebc2d54c.a3cc48afcea7f5c8d2963782fb1f6ba3.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (8, 'Lettuce', 'libero non mattis pulvinar nulla', 19.88, 52, 'https://i5.walmartimages.com/asr/6989391c-7793-442e-b937-f2d0562fef2b.7979218cc798806f9f713c77e3da4939.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
@@ -165,7 +166,18 @@ BEGIN
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Carbonated Water - Blackberry', 'ac tellus semper', 90.42, 32, 'https://i5.walmartimages.com/asr/b2a8a5cd-6b8c-4dc1-8cc5-73106e8375a3.698ba08e9fc04d955fd6fcfe1b54ed96.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Canada Dry', 'nec sem duis aliquam', 2.28, 94, 'https://i5.walmartimages.com/asr/598f8c56-f7df-48f6-b257-1fc86079b1e1.5221fa7979c9d1d84106e9673bc10786.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
     insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Wine', 'et eros vestibulum ac', 31.79, 7, 'https://i5.walmartimages.com/asr/c04a2956-daec-412c-a417-2dd6d33ba061.234ea7fc7218935b97214ec4b29f62e9.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
-
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (5, 'Flour', 'libero quis orci nullam molestie', 7.12, 34, 'https://i5.walmartimages.com/asr/923d0601-6244-48e0-88fd-1d8202b07415.22f35763ff12f4f0f3f47ae48963864c.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (5, 'Coconut Flakes', 'at', 6.86, 1, 'https://i5.walmartimages.com/asr/acebb979-988e-44de-b6c1-63cec5b139fc_2.13141aebf3effc3246f2623fdc8db719.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (9, 'Broom', 'eget elit sodales scelerisque', 17.75, 27, 'https://i5.wal.co/asr/fd00289f-6ed8-4c44-b7a6-bf30bfef85aa.e295c0c6fb0caed748056d68ee53570d.jpeg?odnBg=ffffff&odnHeight=612&odnWidth=612');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Corona', 'magna vestibulum', 22.42, 2, 'https://i5.walmartimages.com/asr/5237d3ad-44fe-41fe-bf12-8996f4b525d2.470b3dabb841959d9ad6390b6af39605.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Tropicana Orange Juice', 'ultrices enim lorem ipsum dolor', 4.41, 56, 'https://i5.walmartimages.com/asr/84286fbe-2113-41d8-91d6-47809f0e14ca.97c2579fcca13194dc2cead1bf054a1a.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (7, 'Pork Sausage', 'etiam pretium iaculis justo', 8.93, 25, 'https://i5.walmartimages.com/asr/31c65292-1ef5-483b-b4a1-d61823d31b86.c132d385c36b6316fd27c7f553f174c4.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (5, 'Ground Cumin', 'mattis odio donec', 2.19, 40, 'https://i5.walmartimages.com/asr/d28c9bb2-fd8b-4fa4-8a00-752e5958be51_1.63375324f57defe2acb46f2ee6fdbd77.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (5, 'Almonds', 'eu mi nulla', 10.79, 59, 'https://i5.walmartimages.com/asr/417ae512-0aca-429b-ac09-688cd6b7b632.558407eb272704fccda4fc075ffb9faa.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (1, 'Apple Juice', 'ultrices', 4.43, 30, 'https://i5.walmartimages.com/asr/59532f8e-0c21-46fd-bd5b-6e2fbc90a22f.0e5f5d500f45ec885dac80323b3e338f.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (4, 'Sour Cream', 'ultrices mattis odio donec vitae', 4.86, 27, 'https://i5.walmartimages.com/asr/7e4ffef3-e640-41b2-affa-808300d94276.e38af11393a9061ca10629c0a3f6cc9b.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+    insert into Item (CategoryId, [Name], [Description], Price, Inventory, [Path]) values (4, 'Cheddar Cheese, Shredded', 'rutrum', 5.89, 24, 'https://i5.walmartimages.com/asr/74da38b8-8e43-46e8-b376-f7f3d86cd741_1.ff8cead88e23a749dda6652d86cc210b.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+go
     insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (3, 1, 1, 5, 5);
     insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (2, 2, 4, 30, 120);
     insert into OrderItem (OrderId, ItemId, Quantity, ItemPrice, TotalCost) values (1, 3, 3, 21, 63);

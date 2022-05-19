@@ -20,6 +20,7 @@ namespace RapidCart.Web.ViewModels
         [Required]
         [Range(0.01, int.MaxValue, ErrorMessage = "Please enter a valid decimal")]
         public int Inventory { get; set; }
+        public string Path { get; set; }
         
     }
 }

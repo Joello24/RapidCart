@@ -77,7 +77,7 @@ namespace RapidCart.Web.Controllers
                 var result = new Response<CartItem>();
                 if (HasDuplicates(cartItem))
                 {
-                    result = _cartItemRepository.IncrementCount(cartItem);
+                    result = _cartItemRepository.IncrementCount(cartItem, cartItem.Quantity);
                 }
                 else
                 {
@@ -135,6 +135,24 @@ namespace RapidCart.Web.Controllers
                 if (model.ItemId < 1)
                     ModelState.AddModelError("ItemId", "Invalid Item ID");
                 return BadRequest(ModelState);
+            }
+        }
+        [HttpDelete]
+        [Route("/api/[controller]/ClearCart/{cartId}")]
+        public IActionResult ClearCart(int cartId)
+        {
+            if (cartId < 1)
+            {
+                return BadRequest("Invalid CartId");
+            }
+            var result = _cartItemRepository.ClearCart(cartId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
             }
         }
 

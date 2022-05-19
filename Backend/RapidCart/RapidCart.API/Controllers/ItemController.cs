@@ -93,6 +93,7 @@ namespace RapidCart.Web.Controllers
                     Description = viewItem.Description,
                     Price = viewItem.Price,
                     Inventory = viewItem.Inventory,
+                    Path = viewItem.Path
                 };
                 var result = _itemRepository.Update(item);
                 if (!result.Success)

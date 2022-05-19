@@ -39,8 +39,6 @@ namespace RapidCart.DAL.Repositories
             return response;
         }
 
-
-
         public Response<Cart> Get(int userId)
         {
 

@@ -16,6 +16,8 @@ namespace RapidCart.Core
         Response<CartItem> Get(int cartId, int itemId);
         Response<List<ViewCartItem>> GetAll(int orderId);
         Response<CartItem> IncrementCount(CartItem cartItem);
+        Response<CartItem> IncrementCount(CartItem cartItem, int quantity);
         Response<CartItem> DecrementCount(CartItem cartItem);
+        Response ClearCart(int cartId);
     }
 }
