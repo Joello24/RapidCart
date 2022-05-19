@@ -1,14 +1,9 @@
 ﻿import {useEffect, useState} from "react";
 import Order from "./Order";
-const reportUrl = "http://localhost:5000/api/report/OrderReport/";
+const reportUrl = "http://localhost:5051/api/report/OrderReport/";
 
 function OrderList(props){
-// fetch orders from DB
-    const [orders, setOrders] = useState([]);
     const [orderReport, setOrderReport] = useState([]);
-    const [itemReportState, setItemReportState] = useState([]);
-    const [user, setUser] = useState(props.user);
-
 
     useEffect(() => {
 
@@ -30,21 +25,6 @@ function OrderList(props){
             })
             .catch(err => console.log(err));
     }
-
-    function newDate(date) {
-        const year = date.substring(0, 4);
-        const month = date.substring(5, 7);
-        const day = date.substring(8, 10);
-        const formatDate = month + "-" + day + "-" + year;
-        return formatDate;
-    }
-
-    const setItemReport = (evt) => {
-        const report = orderReport.filter(order => order.orderId === evt);
-        console.log(evt);
-        setItemReportState(report.orderItems);
-    }
-
 
     return (
         <div className="orders">
