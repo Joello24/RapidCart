@@ -59,8 +59,8 @@ function Item(props) {
                 <img className="h-12 w-12" src={AddedToCart} alt=""/>
             </span>
             <span hidden={props.admin} >
-                <button  onClick={props.Delete} className= "absolute left-20 text-sm bg-green-300 p-2 rounded-bl-xl">Delete</button>
-                <button  onClick={() => setIsEditing(!isEditing)} className= "absolute left-30 text-sm bg-green-300 p-2 rounded-bl-xl">Edit</button>
+                <button  onClick={props.Delete} className= "absolute right-20 text-sm bg-gray-200 p-2 border-solid ">Delete</button>
+                <button  onClick={() => setIsEditing(!isEditing)} className= "absolute left-20 text-sm bg-gray-200 p-2 border solid">Edit</button>
             </span>
                 <img className="max-h-52 w-full bg-white object-contain rounded-t-xl"
                      src= {props.path}
